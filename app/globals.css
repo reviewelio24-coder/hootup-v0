@@ -448,11 +448,11 @@ body:has(.hootup),
   padding: 0;
   flex-wrap: wrap;
 }
-.nav-menu__link {
+.hootup .nav-menu__link {
   display: inline-block;
   padding: 4px 0;
   font-size: 16px;
-  color: var(--hoot-brand);
+  color: var(--hoot-ink);
   border-bottom: 2px solid transparent;
 }
 .nav-menu__link:hover,
