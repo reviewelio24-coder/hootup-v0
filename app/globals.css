@@ -452,7 +452,7 @@ body:has(.hootup),
   display: inline-block;
   padding: 4px 0;
   font-size: 16px;
-  color: var(--hoot-ink);
+  color: var(--hoot-brand);
   border-bottom: 2px solid transparent;
 }
 .nav-menu__link:hover,
