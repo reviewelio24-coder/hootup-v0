@@ -466,6 +466,7 @@ export const devItSubcategoryRoutes: Partial<Record<DevItSubcategory, string>> =
   '모바일 & 앱 개발': '/category/dev-it/mobile',
   '데이터 & AI': '/category/dev-it/data-ai',
   'AI 개발 도구': '/category/dev-it/ai-tools',
+  '노코드 & 자동화': '/category/dev-it/nocode',
 }
 
 export function getDevItCoursesByPage(page: number): CategoryCourse[] {
