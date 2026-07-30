@@ -1,6 +1,6 @@
 export function BrandLogo({ invert = false }: { invert?: boolean }) {
   return (
-    <a className={`brand-logo${invert ? ' brand-logo--invert' : ''}`} href="#" aria-label="HOOT UP 홈">
+    <a className={`brand-logo${invert ? ' brand-logo--invert' : ''}`} href="/" aria-label="HOOT UP 홈">
       <span className="brand-logo__hoot">HOOT</span>
       <span className="brand-logo__up">UP</span>
       <img

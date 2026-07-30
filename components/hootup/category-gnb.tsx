@@ -102,14 +102,24 @@ export function CategoryGnb({ id, open, activeSlug, onActiveChange, onClose }: C
             <ul className="category-gnb__subs">
               {active.subcategories.map((sub) => (
                 <li key={sub}>
-                  <a className="category-gnb__sub" href="#" tabIndex={open ? 0 : -1}>
+                  <a
+                    className="category-gnb__sub"
+                    href={categoryHref(active.slug)}
+                    tabIndex={open ? 0 : -1}
+                    onClick={onClose}
+                  >
                     {sub}
                   </a>
                 </li>
               ))}
             </ul>
 
-            <a className="category-gnb__all" href="#" tabIndex={open ? 0 : -1}>
+            <a
+              className="category-gnb__all"
+              href={categoryHref(active.slug)}
+              tabIndex={open ? 0 : -1}
+              onClick={onClose}
+            >
               {active.name} 전체 보기
               <img src="/figma/chevron-right.svg" alt="" width={14} height={14} aria-hidden="true" />
             </a>
@@ -129,4 +139,9 @@ function modelDescription(cat: GnbCategory) {
   if (cat.model === 'single') return '평생 소장형 단건 클래스'
   if (cat.model === 'subscription') return '올나잇 패스로 무제한 수강'
   return '구독과 단건을 함께 제공하는 카테고리'
+}
+
+function categoryHref(slug: string) {
+  if (slug === 'dev-it') return '/category/dev-it'
+  return `/category/${slug}`
 }

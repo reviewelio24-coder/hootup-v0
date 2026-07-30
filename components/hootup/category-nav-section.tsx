@@ -8,7 +8,7 @@ export function CategoryNavSection() {
         <ul className="category-nav__list">
           {categories.map((cat) => (
             <li key={cat.id}>
-              <a className="category-card" href="#">
+              <a className="category-card" href={cat.id === 'dev' ? '/category/dev-it' : '#'}>
                 <span className="category-card__badge">
                   <img className="category-card__icon" src={cat.icon || "/placeholder.svg"} alt="" width={24} height={24} aria-hidden="true" />
                 </span>
