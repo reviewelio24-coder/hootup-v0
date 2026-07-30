@@ -180,6 +180,7 @@ export const DRAWING_ILLUST_TOTAL_PAGES = 1
 
 export const drawingIllustSubcategoryRoutes: Partial<Record<DrawingIllustSubcategory, string>> = {
   전체: '/category/drawing-illust',
+  '디지털 드로잉': '/category/drawing-illust/digital',
 }
 
 export function getDrawingIllustCoursesByPage(page: number): CategoryCourse[] {
