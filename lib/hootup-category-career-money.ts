@@ -434,7 +434,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     reviews: 1090,
     thumb: '/figma/img/cm2-linkedin.png',
     avatar: '/figma/img/cm-av-bona.png',
-    subcategory: '마케팅 & 브랜딩',
+    subcategory: '취업 & 이직',
     earlybird: true,
   },
   {
@@ -457,6 +457,8 @@ export const CAREER_MONEY_TOTAL_PAGES = 2
 
 export const careerMoneySubcategoryRoutes: Partial<Record<CareerMoneySubcategory, string>> = {
   전체: '/category/career-money',
+  '직무역량 & 일잘러': '/category/career-money/job-skills',
+  '취업 & 이직': '/category/career-money/career',
 }
 
 export function getCareerMoneyCoursesByPage(page: number): CategoryCourse[] {

@@ -150,6 +150,8 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'dev-it' && sub === 'AI 개발 도구') return '/category/dev-it/ai-tools'
   if (slug === 'dev-it' && sub === '노코드 & 자동화') return '/category/dev-it/nocode'
   if (slug === 'dev-it') return '/category/dev-it'
+  if (slug === 'career-money' && sub === '직무역량 & 일잘러') return '/category/career-money/job-skills'
+  if (slug === 'career-money' && sub === '취업 & 이직') return '/category/career-money/career'
   if (slug === 'career-money') return '/category/career-money'
   return `/category/${slug}`
 }
