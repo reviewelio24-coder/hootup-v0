@@ -33,11 +33,11 @@ export const gnbCategories: GnbCategory[] = [
     name: '커리어 & 머니',
     model: 'single',
     subcategories: [
-      '직무 역량 & 일잘러',
+      '직무역량 & 일잘러',
       '취업 & 이직',
       '마케팅 & 브랜딩',
       '사이드프로젝트 & N잡',
-      '재테크 & 투자',
+      '재테크 & 머니',
       '절세 & 머니 관리',
     ],
   },
