@@ -462,6 +462,7 @@ export const devItSubcategoryRoutes: Partial<Record<DevItSubcategory, string>> =
   전체: '/category/dev-it',
   '웹 퍼블리싱': '/category/dev-it/web-publishing',
   프론트엔드: '/category/dev-it/frontend',
+  '백엔드 & 서버': '/category/dev-it/backend',
 }
 
 export function getDevItCoursesByPage(page: number): CategoryCourse[] {
