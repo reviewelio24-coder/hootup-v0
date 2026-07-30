@@ -461,6 +461,7 @@ export const designCreativeSubcategoryRoutes: Partial<Record<DesignCreativeSubca
   '브랜딩 & 로고': '/category/design-creative/branding',
   '3D & 모션 디자인': '/category/design-creative/motion',
   '일러스트 & 디지털아트': '/category/design-creative/illustration',
+  '크리에이티브 입문': '/category/design-creative/intro',
 }
 
 export function getDesignCreativeCoursesByPage(page: number): CategoryCourse[] {

@@ -163,6 +163,7 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'design-creative' && sub === '3D & 모션 디자인') return '/category/design-creative/motion'
   if (slug === 'design-creative' && sub === '일러스트 & 디지털아트')
     return '/category/design-creative/illustration'
+  if (slug === 'design-creative' && sub === '크리에이티브 입문') return '/category/design-creative/intro'
   if (slug === 'design-creative') return '/category/design-creative'
   return `/category/${slug}`
 }
