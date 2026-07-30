@@ -458,7 +458,21 @@ export const devItCoursesPage2: CategoryCourse[] = [
 
 export const DEV_IT_TOTAL_PAGES = 2
 
+export const devItSubcategoryRoutes: Partial<Record<DevItSubcategory, string>> = {
+  전체: '/category/dev-it',
+  '웹 퍼블리싱': '/category/dev-it/web-publishing',
+}
+
 export function getDevItCoursesByPage(page: number): CategoryCourse[] {
   if (page === 2) return devItCoursesPage2
   return devItCoursesPage1
+}
+
+export function getAllDevItCourses(): CategoryCourse[] {
+  return [...devItCoursesPage1, ...devItCoursesPage2]
+}
+
+export function getDevItCoursesBySubcategory(sub: DevItSubcategory): CategoryCourse[] {
+  if (sub === '전체') return getAllDevItCourses()
+  return getAllDevItCourses().filter((c) => c.subcategory === sub)
 }

@@ -104,7 +104,7 @@ export function CategoryGnb({ id, open, activeSlug, onActiveChange, onClose }: C
                 <li key={sub}>
                   <a
                     className="category-gnb__sub"
-                    href={categoryHref(active.slug)}
+                    href={categoryHref(active.slug, sub)}
                     tabIndex={open ? 0 : -1}
                     onClick={onClose}
                   >
@@ -141,7 +141,8 @@ function modelDescription(cat: GnbCategory) {
   return '구독과 단건을 함께 제공하는 카테고리'
 }
 
-function categoryHref(slug: string) {
+function categoryHref(slug: string, sub?: string) {
+  if (slug === 'dev-it' && sub === '웹 퍼블리싱') return '/category/dev-it/web-publishing'
   if (slug === 'dev-it') return '/category/dev-it'
   return `/category/${slug}`
 }

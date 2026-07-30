@@ -2148,6 +2148,7 @@ body:has(.hootup),
   align-items: center;
   gap: 10px;
 }
+.hootup a.category-page__chip,
 .category-page__chip {
   display: inline-flex;
   align-items: center;
@@ -2163,7 +2164,9 @@ body:has(.hootup),
   line-height: 22px;
   cursor: pointer;
   white-space: nowrap;
+  text-decoration: none;
 }
+.hootup a.category-page__chip.is-active,
 .category-page__chip.is-active {
   border-color: var(--hoot-brand);
   background: var(--hoot-brand);
