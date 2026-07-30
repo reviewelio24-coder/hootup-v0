@@ -165,6 +165,7 @@ function categoryHref(slug: string, sub?: string) {
     return '/category/design-creative/illustration'
   if (slug === 'design-creative' && sub === '크리에이티브 입문') return '/category/design-creative/intro'
   if (slug === 'design-creative') return '/category/design-creative'
+  if (slug === 'photo-video' && sub === '사진 촬영') return '/category/photo-video/photography'
   if (slug === 'photo-video') return '/category/photo-video'
   return `/category/${slug}`
 }
