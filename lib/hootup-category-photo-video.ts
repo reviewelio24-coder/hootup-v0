@@ -212,6 +212,7 @@ export const photoVideoSubcategoryRoutes: Partial<Record<PhotoVideoSubcategory, 
   '사진 촬영': '/category/photo-video/photography',
   '영상 촬영': '/category/photo-video/filming',
   '편집 & 후보정': '/category/photo-video/editing',
+  '모션 & 크리에이티브': '/category/photo-video/motion',
 }
 
 export function getPhotoVideoCoursesByPage(page: number): CategoryCourse[] {
