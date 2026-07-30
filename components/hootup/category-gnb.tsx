@@ -158,6 +158,7 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'career-money' && sub === '절세 & 머니 관리') return '/category/career-money/tax'
   if (slug === 'career-money') return '/category/career-money'
   if (slug === 'design-creative' && sub === 'UX/UI 디자인') return '/category/design-creative/ux-ui'
+  if (slug === 'design-creative' && sub === '그래픽 디자인') return '/category/design-creative/graphic'
   if (slug === 'design-creative') return '/category/design-creative'
   return `/category/${slug}`
 }

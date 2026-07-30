@@ -457,6 +457,7 @@ export const DESIGN_CREATIVE_TOTAL_PAGES = 2
 export const designCreativeSubcategoryRoutes: Partial<Record<DesignCreativeSubcategory, string>> = {
   전체: '/category/design-creative',
   'UX/UI 디자인': '/category/design-creative/ux-ui',
+  '그래픽 디자인': '/category/design-creative/graphic',
 }
 
 export function getDesignCreativeCoursesByPage(page: number): CategoryCourse[] {
