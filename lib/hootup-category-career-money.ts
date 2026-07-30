@@ -13,7 +13,7 @@ export const careerMoneySubcategories = [
   '취업 & 이직',
   '마케팅 & 브랜딩',
   '사이드프로젝트 & N잡',
-  '재테크 & 머니',
+  '재테크 & 투자',
   '절세 & 머니 관리',
 ] as const
 
@@ -75,7 +75,7 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     reviews: 3280,
     thumb: '/figma/img/cm-stock.png',
     avatar: '/figma/img/cm-av-jay.png',
-    subcategory: '재테크 & 머니',
+    subcategory: '재테크 & 투자',
     earlybird: true,
   },
   {
@@ -117,7 +117,7 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     reviews: 1560,
     thumb: '/figma/img/cm-asset.png',
     avatar: '/figma/img/cm-av-rin.png',
-    subcategory: '재테크 & 머니',
+    subcategory: '재테크 & 투자',
     earlybird: true,
   },
   {
@@ -321,7 +321,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     reviews: 1940,
     thumb: '/figma/img/cm2-estate.png',
     avatar: '/figma/img/cm-av-min2.png',
-    subcategory: '재테크 & 머니',
+    subcategory: '재테크 & 투자',
     earlybird: true,
   },
   {
@@ -420,7 +420,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     reviews: 1720,
     thumb: '/figma/img/cm2-pension.png',
     avatar: '/figma/img/cm-av-jin.png',
-    subcategory: '재테크 & 머니',
+    subcategory: '재테크 & 투자',
     earlybird: true,
   },
   {
@@ -461,7 +461,7 @@ export const careerMoneySubcategoryRoutes: Partial<Record<CareerMoneySubcategory
   '취업 & 이직': '/category/career-money/career',
   '마케팅 & 브랜딩': '/category/career-money/marketing',
   '사이드프로젝트 & N잡': '/category/career-money/side-project',
-  '재테크 & 머니': '/category/career-money/finance',
+  '재테크 & 투자': '/category/career-money/finance',
   '절세 & 머니 관리': '/category/career-money/tax',
 }
 
