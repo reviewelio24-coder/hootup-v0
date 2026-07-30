@@ -117,7 +117,7 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     reviews: 1560,
     thumb: '/figma/img/cm-asset.png',
     avatar: '/figma/img/cm-av-rin.png',
-    subcategory: '절세 & 머니 관리',
+    subcategory: '재테크 & 머니',
     earlybird: true,
   },
   {
@@ -461,6 +461,7 @@ export const careerMoneySubcategoryRoutes: Partial<Record<CareerMoneySubcategory
   '취업 & 이직': '/category/career-money/career',
   '마케팅 & 브랜딩': '/category/career-money/marketing',
   '사이드프로젝트 & N잡': '/category/career-money/side-project',
+  '재테크 & 머니': '/category/career-money/finance',
 }
 
 export function getCareerMoneyCoursesByPage(page: number): CategoryCourse[] {

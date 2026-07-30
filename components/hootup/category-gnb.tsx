@@ -154,6 +154,7 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'career-money' && sub === '취업 & 이직') return '/category/career-money/career'
   if (slug === 'career-money' && sub === '마케팅 & 브랜딩') return '/category/career-money/marketing'
   if (slug === 'career-money' && sub === '사이드프로젝트 & N잡') return '/category/career-money/side-project'
+  if (slug === 'career-money' && sub === '재테크 & 머니') return '/category/career-money/finance'
   if (slug === 'career-money') return '/category/career-money'
   return `/category/${slug}`
 }
