@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
-import { Raleway, Noto_Sans_KR } from 'next/font/google'
+import { Raleway } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import './fonts.css'
 import './globals.css'
 
 /* Raleway: display / English / numbers (Figma spec) */
@@ -8,14 +9,6 @@ const raleway = Raleway({
   subsets: ['latin'],
   weight: ['400', '600', '700', '800', '900'],
   variable: '--font-display',
-  display: 'swap',
-})
-
-/* Noto Sans KR: Korean body & UI (Spoqa Han Sans Neo substitute) */
-const notoSansKr = Noto_Sans_KR({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-sans',
   display: 'swap',
 })
 
@@ -45,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ko" className={`${raleway.variable} ${notoSansKr.variable} hootup`}>
+    <html lang="ko" className={`${raleway.variable} hootup`}>
       <body className="antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

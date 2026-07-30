@@ -1,31 +1,14 @@
-import { footerLinks } from '@/lib/hootup-data'
+import { footerContacts, footerLinks, footerPolicies } from '@/lib/hootup-data'
 import { BrandLogo } from './brand-logo'
-
-const socials = [
-  { name: '인스타그램', src: '/figma/instagram.svg' },
-  { name: '유튜브', src: '/figma/youtube.svg' },
-  { name: '블로그', src: '/figma/blog.svg' },
-]
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="hoot-container">
+      <div className="hoot-container site-footer__inner">
         <div className="site-footer__top">
           <div className="site-footer__brand">
             <BrandLogo invert />
-            <p className="site-footer__tagline">
-              밤에 깨어 배우는 사람들의 아지트. 커리어부터 취미까지, HOOT UP과 함께 오늘도 레벨업하세요.
-            </p>
-            <ul className="site-footer__social">
-              {socials.map((social) => (
-                <li key={social.name}>
-                  <a href="#" aria-label={`HOOT UP ${social.name}`}>
-                    <img src={social.src || '/placeholder.svg'} alt="" width={18} height={18} loading="lazy" aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="site-footer__tagline">밤에도 깨어 배우는 사람들의 아지트</p>
           </div>
 
           <nav className="site-footer__links" aria-label="푸터 메뉴">
@@ -45,25 +28,45 @@ export function SiteFooter() {
         <div className="site-footer__mid">
           <div className="support">
             <p className="support__label">고객센터</p>
-            <p className="support__phone">1600-0000</p>
-            <p className="support__hours">평일 10:00 – 18:00 (점심 12:30 – 13:30 / 주말 · 공휴일 휴무)</p>
+            <p className="support__phone">02-1234-5678</p>
+            <p className="support__hours">주중 10:00–18:00 / 주말·공휴일 휴무</p>
           </div>
-          <div className="support">
-            <p className="support__label">문의</p>
-            <div className="support__emails">
-              <a href="mailto:help@hootup.co.kr">수강 문의 · help@hootup.co.kr</a>
-              <a href="mailto:creator@hootup.co.kr">클래스 개설 · creator@hootup.co.kr</a>
-              <a href="mailto:biz@hootup.co.kr">제휴 · 광고 · biz@hootup.co.kr</a>
-            </div>
+
+          <div className="support__emails">
+            {footerContacts.map((contact) => (
+              <div className="support__email" key={contact.email}>
+                <p className="support__email-label">{contact.label}</p>
+                <a className="support__email-link" href={`mailto:${contact.email}`}>
+                  {contact.email}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="site-footer__legal">
-          <p>
-            (주)훗업 컴퍼니 · 대표 신호진 · 서울특별시 서초구 강남대로 000 · 사업자등록번호 000-00-00000 ·
-            통신판매업신고 제2026-서울서초-0000호
-          </p>
-          <p className="site-footer__legal-copy">© 2026 HOOT UP Company. All rights reserved.</p>
+          <nav className="site-footer__policies" aria-label="약관 및 정책">
+            {footerPolicies.map((policy) => (
+              <a key={policy} href="#">
+                {policy}
+              </a>
+            ))}
+          </nav>
+
+          <div className="site-footer__company">
+            <p>
+              <span>(주)훗업 컴퍼니</span>
+              <span>대표자 : 신호진</span>
+              <span>사업자등록번호 : 123-45-67890</span>
+              <span>개인정보책임관리자 : 신호진</span>
+            </p>
+            <p>
+              <span>통신판매신고 : 제 2026-서울서초-1234호</span>
+              <span>(06621) 서울 서초구 강남대로 373, 10층</span>
+            </p>
+          </div>
+
+          <p className="site-footer__legal-copy">Copyright © HOOT UP. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -9,6 +9,12 @@ export function SiteHeader() {
           <BrandLogo />
 
           <form className="site-header__search" role="search" action="#">
+            <input
+              className="site-header__search-input"
+              type="search"
+              placeholder="어떤 강의를 찾으시나요?"
+              aria-label="클래스 검색"
+            />
             <img
               className="site-header__icon"
               src="/figma/search.svg"
@@ -17,12 +23,6 @@ export function SiteHeader() {
               height={20}
               aria-hidden="true"
             />
-            <input
-              className="site-header__search-input"
-              type="search"
-              placeholder="배우고 싶은 모든 것을 검색해 보세요"
-              aria-label="클래스 검색"
-            />
           </form>
 
           <div className="site-header__actions">
@@ -30,9 +30,9 @@ export function SiteHeader() {
               <img className="site-header__icon" src="/figma/cart.svg" alt="" width={24} height={24} aria-hidden="true" />
               <span className="site-header__badge" aria-hidden="true">2</span>
             </button>
-            <button className="site-header__action" type="button" aria-label="알림, 새 알림 5개">
+            <button className="site-header__action" type="button" aria-label="알림, 새 알림 2개">
               <img className="site-header__icon" src="/figma/bell.svg" alt="" width={24} height={24} aria-hidden="true" />
-              <span className="site-header__badge" aria-hidden="true">5</span>
+              <span className="site-header__badge" aria-hidden="true">2</span>
             </button>
             <button className="site-header__action" type="button" aria-label="내 계정">
               <img
@@ -51,7 +51,7 @@ export function SiteHeader() {
       <nav className="site-header__nav" aria-label="주요 메뉴">
         <div className="hoot-container site-header__nav-inner">
           <img
-            className="site-header__icon"
+            className="site-header__icon site-header__nav-icon"
             src="/figma/list.svg"
             alt=""
             width={24}

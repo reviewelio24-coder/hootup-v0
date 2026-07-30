@@ -16,8 +16,22 @@ function getTimeLeft(target: number): TimeLeft {
 
 const pad = (n: number) => n.toString().padStart(2, '0')
 
+function DigitPair({ value }: { value: number }) {
+  const digits = pad(value).split('')
+  return (
+    <span className="countdown__pair">
+      {digits.map((d, i) => (
+        <span key={i} className="countdown__digit">
+          <span className="countdown__digit-bg" aria-hidden="true" />
+          <span className="countdown__digit-num">{d}</span>
+        </span>
+      ))}
+    </span>
+  )
+}
+
 export function PromoBannerSection() {
-  const [target] = useState(() => Date.now() + 7 * 86_400_000)
+  const [target] = useState(() => Date.now() + 6 * 86_400_000 + 13 * 3_600_000 + 46 * 60_000 + 31_000)
   const [time, setTime] = useState<TimeLeft | null>(null)
 
   useEffect(() => {
@@ -29,47 +43,66 @@ export function PromoBannerSection() {
   const units: Array<[string, number]> = [
     ['DAYS', time?.days ?? 0],
     ['HOURS', time?.hours ?? 0],
-    ['MIN', time?.minutes ?? 0],
-    ['SEC', time?.seconds ?? 0],
+    ['MINUTES', time?.minutes ?? 0],
+    ['SECONDS', time?.seconds ?? 0],
   ]
 
   return (
     <section className="promo" aria-labelledby="promo-heading">
-      <div className="hoot-container promo__inner">
-        <div className="promo__content">
-          <p className="promo__eyebrow">HOOT UP FESTA</p>
-          <h2 className="promo__title" id="promo-heading">
-            레벨업 위크 마감까지
-            <br />
-            딱 이만큼 남았어요
-          </h2>
-          <p className="promo__desc">
-            1년 중 가장 큰 할인 주간이 끝나기 전에, 담아 두었던 클래스를 지금 시작하세요.
-          </p>
-          <a className="promo__cta" href="#">
-            할인 클래스 담으러 가기
-          </a>
+      <div className="promo__bg" aria-hidden="true">
+        <img src="/figma/img/promo-bg.png" alt="" />
+      </div>
+
+      <div
+        className="countdown"
+        role="timer"
+        aria-live="off"
+        aria-label="레벨업 위크 종료까지 남은 시간"
+      >
+        <div className="countdown__units">
+          {units.map(([label, value]) => (
+            <DigitPair key={label} value={value} />
+          ))}
+        </div>
+        <div className="countdown__labels">
+          {units.map(([label]) => (
+            <span key={label}>{label}</span>
+          ))}
+        </div>
+      </div>
+
+      <div className="promo__panel">
+        <div className="promo__discount">
+          <span className="promo__discount-max">최대</span>
+          <span className="promo__discount-num">40%</span>
         </div>
 
-        <div
-          className="countdown"
-          role="timer"
-          aria-live="off"
-          aria-label="레벨업 위크 종료까지 남은 시간"
-        >
-          {units.map(([label, value], i) => (
-            <span key={label} style={{ display: 'contents' }}>
-              <span className="countdown__box">
-                <span className="countdown__num">{pad(value)}</span>
-                <span className="countdown__label">{label}</span>
-              </span>
-              {i < units.length - 1 && (
-                <span className="countdown__colon" aria-hidden="true">
-                  :
-                </span>
-              )}
-            </span>
-          ))}
+        <div className="promo__copy">
+          <div className="promo__title-row">
+            <h2 className="promo__title" id="promo-heading">
+              LEVEL UP WEEK
+            </h2>
+            <img className="promo__rocket" src="/figma/rocket.svg" alt="" width={40} height={102} aria-hidden="true" />
+          </div>
+          <p className="promo__subtitle">
+            놓치면 <strong>내년 봄</strong>까지, 기회는 다시 없어요.
+          </p>
+          <div className="promo__desc">
+            <p>
+              개발·디자인·커리어 <strong>‘평생 소장’</strong> 강의를 올해 가장 크게 만나는{' '}
+              <strong>마지막 주간.</strong>
+            </p>
+            <p>한 번 사두면 평생 당신 거예요</p>
+          </div>
+        </div>
+
+        <div className="promo__side">
+          <div className="promo__illus" aria-hidden="true">
+            <img src="/figma/promo-illus-c2.svg" alt="" />
+            <img src="/figma/promo-illus-c1.svg" alt="" />
+            <img src="/figma/promo-illus-out.svg" alt="" />
+          </div>
+          <p className="promo__side-note">로드맵은 +18% 더!</p>
         </div>
       </div>
     </section>

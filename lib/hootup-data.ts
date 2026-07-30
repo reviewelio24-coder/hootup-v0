@@ -190,11 +190,11 @@ export const collections: Collection[] = [
 ]
 
 export const categories = [
-  { id: 'dev', label: '개발 · IT', icon: '/figma/calendar.svg' },
-  { id: 'career', label: '커리어 · 머니', icon: '/figma/cash-stack.svg' },
-  { id: 'photo', label: '사진 · 영상', icon: '/figma/camera.svg' },
-  { id: 'draw', label: '드로잉 · 일러스트', icon: '/figma/easel.svg' },
-  { id: 'wellness', label: '운동 · 마음챙김', icon: '/figma/heart-pulse.svg' },
+  { id: 'dev', label: '개발・IT', icon: '/figma/calendar.svg' },
+  { id: 'career', label: '커리어・머니', icon: '/figma/cash-stack.svg' },
+  { id: 'photo', label: '사진・영상', icon: '/figma/camera.svg' },
+  { id: 'draw', label: '드로잉・일러스트', icon: '/figma/easel.svg' },
+  { id: 'wellness', label: '운동・마음챙김', icon: '/figma/heart-pulse.svg' },
   { id: 'more', label: '더보기', icon: '/figma/three-dots.svg' },
 ]
 
@@ -204,13 +204,83 @@ export const navItems = [
   '이벤트',
   '새로운 클래스',
   '신규 회원 혜택',
-  '시그니처 클래스',
+  '시그니쳐 클래스',
 ]
 
 export const chart: Course[] = [
-  ...collections[0].courses,
-  ...collections[1].courses,
-].slice(0, 8)
+  {
+    id: 'ipad-draw',
+    title: '아이패드로 시작하는 감성 캐릭터 드로잉',
+    author: '무지(MOOZI)・28강・6시간',
+    discount: 35,
+    origin: 99000,
+    final: 64350,
+    rating: 4.6,
+    reviews: 512,
+    thumb: '/figma/img/chart-drawing.png',
+    avatar: AV2,
+  },
+  {
+    id: 'leather',
+    title: '손끝에서 완성되는 첫 가죽 카드지갑 만들기',
+    author: '레더공방 모루・30강・6시간',
+    discount: 35,
+    origin: 99000,
+    final: 64350,
+    rating: 4.5,
+    reviews: 388,
+    thumb: '/figma/img/chart-leather.png',
+    avatar: AV1,
+  },
+  {
+    id: 'photo-smart',
+    title: '스마트폰 하나로 인생샷 만드는 사진 클래스',
+    author: '빛그림 윤도・42강・8시간',
+    discount: 35,
+    origin: 99000,
+    final: 64350,
+    rating: 4.7,
+    reviews: 641,
+    thumb: '/figma/img/chart-photo.png',
+    avatar: AV1,
+  },
+  {
+    id: 'yoga',
+    title: '뻣뻣한 몸이 풀리는 14일 모닝 요가 루틴',
+    author: '요가하는 미오・30강・5시간 30분',
+    discount: 35,
+    origin: 88000,
+    final: 57200,
+    rating: 4.8,
+    reviews: 723,
+    thumb: '/figma/img/chart-yoga.png',
+    avatar: AV2,
+  },
+  {
+    id: 'cook',
+    title: '자취생을 위한 실패 없는 한 끼 홈쿡 30',
+    author: '키친노트 단・40강・8시간',
+    discount: 35,
+    origin: 88000,
+    final: 57200,
+    rating: 4.4,
+    reviews: 456,
+    thumb: '/figma/img/chart-cook.png',
+    avatar: AV1,
+  },
+  {
+    id: 'insta',
+    title: '0원으로 시작하는 인스타 콘텐츠 마케팅',
+    author: '마케터 하루・50강・10시간',
+    discount: 35,
+    origin: 121000,
+    final: 78650,
+    rating: 4.5,
+    reviews: 389,
+    thumb: '/figma/img/chart-insta.png',
+    avatar: AV2,
+  },
+]
 
 export type Magazine = {
   id: string
@@ -323,20 +393,41 @@ export const news: News[] = [
 export const footerLinks = [
   {
     title: 'HOOT UP',
-    links: ['브랜드 스토리', '훗업 데스크 (뉴스)', '훗업 매거진 (블로그)', '단체 교육 (B2B)', '채용 안내'],
+    links: ['브랜드 스토리', '훗업 데스크(뉴스)', '훗업 매거진(블로그)', '단체 교육 (B2B)', '채용 안내'],
   },
   {
     title: '둘러보기',
-    links: ['전체 카테고리', '훗업 차트 (베스트)', '갓 부화한 클래스', '훗업 페스타 (이벤트)', '레벨업 로드맵', '올나잇 패스 (구독)'],
+    links: [
+      '전체 카테고리',
+      '훗업 차트(베스트)',
+      '갓 부화한 클래스',
+      '훗업 페스타(이벤트)',
+      '레벨업 로드맵',
+      '올나잇 패스(구독)',
+    ],
   },
   {
     title: '크리에이터 지원',
-    links: ['클래스 개설 문의하기', '크리에이터 가이드', '스튜디오 대여', '정산 · 수익 안내', '멘토 교육 지원'],
+    links: ['클래스 개설 문의하기', '크리에이터 가이드', '스튜디오 대여', '정산・수익 안내', '멘토 교육 지원'],
   },
   {
     title: '고객센터',
-    links: ['공지사항', '자주 묻는 질문 (FAQ)', '이용약관', '개인정보처리방침', '환불 규정'],
+    links: ['공지사항', '자주 묻는 질문(FAQ)', '이용약관', '개인정보처리방침', '환불 규정'],
   },
+]
+
+export const footerPolicies = [
+  '이용약관',
+  '개인정보처리방침',
+  '청소년 보호정책',
+  '환불 규정',
+  '사업자정보 확인',
+]
+
+export const footerContacts = [
+  { label: '환불 문의', email: 'refund@hootup.co.kr' },
+  { label: '기타 문의', email: 'help@hootup.co.kr' },
+  { label: '크리에이터 지원', email: 'creator@hootup.co.kr' },
 ]
 
 export function formatPrice(n: number) {
