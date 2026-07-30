@@ -146,6 +146,7 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'dev-it' && sub === '프론트엔드') return '/category/dev-it/frontend'
   if (slug === 'dev-it' && sub === '백엔드 & 서버') return '/category/dev-it/backend'
   if (slug === 'dev-it' && sub === '모바일 & 앱 개발') return '/category/dev-it/mobile'
+  if (slug === 'dev-it' && sub === '데이터 & AI') return '/category/dev-it/data-ai'
   if (slug === 'dev-it') return '/category/dev-it'
   return `/category/${slug}`
 }

@@ -352,7 +352,7 @@ export const devItCoursesPage2: CategoryCourse[] = [
     reviews: 2760,
     thumb: '/figma/img/cat2-chatbot.png',
     avatar: AV1,
-    subcategory: 'AI 개발 도구',
+    subcategory: '데이터 & AI',
     earlybird: true,
   },
   {
@@ -464,6 +464,7 @@ export const devItSubcategoryRoutes: Partial<Record<DevItSubcategory, string>> =
   프론트엔드: '/category/dev-it/frontend',
   '백엔드 & 서버': '/category/dev-it/backend',
   '모바일 & 앱 개발': '/category/dev-it/mobile',
+  '데이터 & AI': '/category/dev-it/data-ai',
 }
 
 export function getDevItCoursesByPage(page: number): CategoryCourse[] {
