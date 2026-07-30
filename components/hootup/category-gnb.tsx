@@ -174,6 +174,8 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'drawing-illust' && sub === '손그림 & 회화') return '/category/drawing-illust/hand-drawing'
   if (slug === 'drawing-illust' && sub === '캐릭터 & 웹툰')
     return '/category/drawing-illust/character-webtoon'
+  if (slug === 'drawing-illust' && sub === '캘리그라피 & 레터링')
+    return '/category/drawing-illust/calligraphy-lettering'
   if (slug === 'drawing-illust') return '/category/drawing-illust'
   return `/category/${slug}`
 }
