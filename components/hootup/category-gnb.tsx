@@ -171,6 +171,7 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'photo-video' && sub === '모션 & 크리에이티브') return '/category/photo-video/motion'
   if (slug === 'photo-video') return '/category/photo-video'
   if (slug === 'drawing-illust' && sub === '디지털 드로잉') return '/category/drawing-illust/digital'
+  if (slug === 'drawing-illust' && sub === '손그림 & 회화') return '/category/drawing-illust/hand-drawing'
   if (slug === 'drawing-illust') return '/category/drawing-illust'
   return `/category/${slug}`
 }
