@@ -210,6 +210,8 @@ export const PHOTO_VIDEO_TOTAL_PAGES = 1
 export const photoVideoSubcategoryRoutes: Partial<Record<PhotoVideoSubcategory, string>> = {
   전체: '/category/photo-video',
   '사진 촬영': '/category/photo-video/photography',
+  '영상 촬영': '/category/photo-video/filming',
+  '편집 & 후보정': '/category/photo-video/editing',
 }
 
 export function getPhotoVideoCoursesByPage(page: number): CategoryCourse[] {
