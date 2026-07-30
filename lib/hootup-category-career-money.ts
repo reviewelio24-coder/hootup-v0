@@ -459,6 +459,7 @@ export const careerMoneySubcategoryRoutes: Partial<Record<CareerMoneySubcategory
   전체: '/category/career-money',
   '직무역량 & 일잘러': '/category/career-money/job-skills',
   '취업 & 이직': '/category/career-money/career',
+  '마케팅 & 브랜딩': '/category/career-money/marketing',
 }
 
 export function getCareerMoneyCoursesByPage(page: number): CategoryCourse[] {
