@@ -459,6 +459,7 @@ export const designCreativeSubcategoryRoutes: Partial<Record<DesignCreativeSubca
   'UX/UI 디자인': '/category/design-creative/ux-ui',
   '그래픽 디자인': '/category/design-creative/graphic',
   '브랜딩 & 로고': '/category/design-creative/branding',
+  '3D & 모션 디자인': '/category/design-creative/motion',
 }
 
 export function getDesignCreativeCoursesByPage(page: number): CategoryCourse[] {
