@@ -182,6 +182,7 @@ export const drawingIllustSubcategoryRoutes: Partial<Record<DrawingIllustSubcate
   전체: '/category/drawing-illust',
   '디지털 드로잉': '/category/drawing-illust/digital',
   '손그림 & 회화': '/category/drawing-illust/hand-drawing',
+  '캐릭터 & 웹툰': '/category/drawing-illust/character-webtoon',
 }
 
 export function getDrawingIllustCoursesByPage(page: number): CategoryCourse[] {
