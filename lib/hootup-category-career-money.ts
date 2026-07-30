@@ -462,6 +462,7 @@ export const careerMoneySubcategoryRoutes: Partial<Record<CareerMoneySubcategory
   '마케팅 & 브랜딩': '/category/career-money/marketing',
   '사이드프로젝트 & N잡': '/category/career-money/side-project',
   '재테크 & 머니': '/category/career-money/finance',
+  '절세 & 머니 관리': '/category/career-money/tax',
 }
 
 export function getCareerMoneyCoursesByPage(page: number): CategoryCourse[] {
