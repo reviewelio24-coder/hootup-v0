@@ -179,6 +179,8 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'drawing-illust') return '/category/drawing-illust'
   if (slug === 'fitness-mindfulness' && sub === '홈트 & 근력')
     return '/category/fitness-mindfulness/home-training'
+  if (slug === 'fitness-mindfulness' && sub === '요가 & 필라테스')
+    return '/category/fitness-mindfulness/yoga-pilates'
   if (slug === 'fitness-mindfulness') return '/category/fitness-mindfulness'
   return `/category/${slug}`
 }
