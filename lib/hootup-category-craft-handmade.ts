@@ -184,6 +184,7 @@ export const craftHandmadeSubcategoryRoutes: Partial<Record<CraftHandmadeSubcate
   '가죽 & 패브릭 공예': '/category/craft-handmade/leather-fabric',
   '도예 & 점토': '/category/craft-handmade/pottery-clay',
   '캔들 & 플라워': '/category/craft-handmade/candle-flower',
+  '주얼리 & 데코 소품': '/category/craft-handmade/jewelry-deco',
 }
 
 export function getCraftHandmadeCoursesByPage(page: number): CategoryCourse[] {
