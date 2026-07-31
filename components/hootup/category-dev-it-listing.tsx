@@ -53,6 +53,7 @@ export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
 
   const activeSub = lockedSub ?? sub
   const showPager = !lockedSub
+  const showDealFilters = activeSub === '전체'
 
   const goToPage = (next: number) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -79,10 +80,12 @@ export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
         ? [...getDevItCoursesByPage(page)]
         : getDevItCoursesBySubcategory(activeSub)
 
-    if (earlybird) list = list.filter((c) => c.earlybird)
-    if (eventDeal) list = list.filter((c) => c.event)
+    if (showDealFilters) {
+      if (earlybird) list = list.filter((c) => c.earlybird)
+      if (eventDeal) list = list.filter((c) => c.event)
+    }
     return sortCourses(list, sort)
-  }, [lockedSub, activeSub, page, sort, earlybird, eventDeal])
+  }, [lockedSub, activeSub, page, sort, earlybird, eventDeal, showDealFilters])
 
   return (
     <div className="category-page">
@@ -171,22 +174,26 @@ export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
             ) : null}
           </div>
 
-          <button
-            type="button"
-            className={`category-page__filter-chip${earlybird ? ' is-on' : ''}`}
-            aria-pressed={earlybird}
-            onClick={() => setEarlybird((v) => !v)}
-          >
-            얼리버드 할인
-          </button>
-          <button
-            type="button"
-            className={`category-page__filter-chip${eventDeal ? ' is-on' : ''}`}
-            aria-pressed={eventDeal}
-            onClick={() => setEventDeal((v) => !v)}
-          >
-            이벤트 할인
-          </button>
+          {showDealFilters ? (
+            <>
+              <button
+                type="button"
+                className={`category-page__filter-chip${earlybird ? ' is-on' : ''}`}
+                aria-pressed={earlybird}
+                onClick={() => setEarlybird((v) => !v)}
+              >
+                얼리버드 할인
+              </button>
+              <button
+                type="button"
+                className={`category-page__filter-chip${eventDeal ? ' is-on' : ''}`}
+                aria-pressed={eventDeal}
+                onClick={() => setEventDeal((v) => !v)}
+              >
+                이벤트 할인
+              </button>
+            </>
+          ) : null}
         </div>
 
         {courses.length > 0 ? (
