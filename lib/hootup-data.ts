@@ -9,6 +9,7 @@ export type Course = {
   reviews: number
   thumb: string
   avatar: string
+  href?: string
 }
 
 export type Collection = {
@@ -41,6 +42,7 @@ export const collections: Collection[] = [
       },
       {
         id: 'webpub',
+        href: '/course/responsive-publishing',
         title: '제로부터 완성하는 반응형 웹 퍼블리싱 마스터 클래스',
         author: '코드랩 현우 · 52강 · 11시간',
         discount: 30,

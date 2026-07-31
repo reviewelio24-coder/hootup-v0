@@ -5,10 +5,11 @@ import { formatPrice } from '@/lib/hootup-data'
 
 export function CourseCard({ course }: { course: Course }) {
   const fullStars = Math.round(course.rating)
+  const href = course.href ?? '#'
 
   return (
     <article className="course-card">
-      <a className="course-card__thumb" href="#" aria-label={`${course.title} 상세 보기`}>
+      <a className="course-card__thumb" href={href} aria-label={`${course.title} 상세 보기`}>
         <img
           className="course-card__img"
           src={course.thumb || '/placeholder.svg'}
@@ -38,7 +39,7 @@ export function CourseCard({ course }: { course: Course }) {
         />
         <div className="course-card__info">
           <h3 className="course-card__title">
-            <a href="#">{course.title}</a>
+            <a href={href}>{course.title}</a>
           </h3>
           <p className="course-card__author">{course.author}</p>
 

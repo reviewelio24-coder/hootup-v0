@@ -25,6 +25,7 @@ export type SignatureClassesSubcategory = (typeof signatureClassesSubcategories)
 export const signatureClassesCoursesPage1: CategoryCourse[] = [
   {
     id: 'sig-webpub',
+    href: '/course/responsive-publishing',
     title: '제로부터 완성하는 반응형 웹 퍼블리싱 마스터 클래스',
     author: '코드랩 현우・52강・11시간',
     discount: 30,
