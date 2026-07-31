@@ -98,7 +98,11 @@ export function SiteHeader() {
               }
               return (
                 <li key={item}>
-                  <a className="nav-menu__link" href="#" onClick={closeGnb}>
+                  <a
+                    className="nav-menu__link"
+                    href={item === '베스트 클래스' ? '/category/best-classes' : '#'}
+                    onClick={closeGnb}
+                  >
                     {item}
                   </a>
                 </li>

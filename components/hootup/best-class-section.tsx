@@ -9,7 +9,7 @@ export function BestClassSection() {
           <h2 className="collection__title" id="best-heading">
             <b>HOOT UP</b> 차트, 인기 강의
           </h2>
-          <a className="collection__more" href="#">
+          <a className="collection__more" href="/category/best-classes">
             전체 클래스 보기
           </a>
         </div>
