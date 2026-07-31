@@ -197,6 +197,8 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'craft-handmade') return '/category/craft-handmade'
   if (slug === 'cooking-baking' && sub === '집밥 & 한 끼 요리')
     return '/category/cooking-baking/home-cooking'
+  if (slug === 'cooking-baking' && sub === '베이킹 & 디저트')
+    return '/category/cooking-baking/baking'
   if (slug === 'cooking-baking') return '/category/cooking-baking'
   return `/category/${slug}`
 }
