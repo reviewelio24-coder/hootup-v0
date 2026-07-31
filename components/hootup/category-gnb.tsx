@@ -181,6 +181,8 @@ function categoryHref(slug: string, sub?: string) {
     return '/category/fitness-mindfulness/home-training'
   if (slug === 'fitness-mindfulness' && sub === '요가 & 필라테스')
     return '/category/fitness-mindfulness/yoga-pilates'
+  if (slug === 'fitness-mindfulness' && sub === '러닝 & 유산소')
+    return '/category/fitness-mindfulness/running'
   if (slug === 'fitness-mindfulness') return '/category/fitness-mindfulness'
   return `/category/${slug}`
 }
