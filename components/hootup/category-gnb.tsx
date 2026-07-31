@@ -186,5 +186,6 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'fitness-mindfulness' && sub === '명상 & 마음챙김')
     return '/category/fitness-mindfulness/meditation'
   if (slug === 'fitness-mindfulness') return '/category/fitness-mindfulness'
+  if (slug === 'craft-handmade') return '/category/craft-handmade'
   return `/category/${slug}`
 }
