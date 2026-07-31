@@ -199,6 +199,8 @@ function categoryHref(slug: string, sub?: string) {
     return '/category/cooking-baking/home-cooking'
   if (slug === 'cooking-baking' && sub === '베이킹 & 디저트')
     return '/category/cooking-baking/baking'
+  if (slug === 'cooking-baking' && sub === '홈카페 & 음료')
+    return '/category/cooking-baking/home-cafe'
   if (slug === 'cooking-baking') return '/category/cooking-baking'
   return `/category/${slug}`
 }

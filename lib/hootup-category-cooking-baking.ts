@@ -184,6 +184,7 @@ export const cookingBakingSubcategoryRoutes: Partial<Record<CookingBakingSubcate
   전체: '/category/cooking-baking',
   '집밥 & 한 끼 요리': '/category/cooking-baking/home-cooking',
   '베이킹 & 디저트': '/category/cooking-baking/baking',
+  '홈카페 & 음료': '/category/cooking-baking/home-cafe',
 }
 
 export function getCookingBakingCoursesByPage(page: number): CategoryCourse[] {
