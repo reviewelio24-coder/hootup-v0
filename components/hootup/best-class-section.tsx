@@ -47,7 +47,7 @@ export function BestClassSection() {
           <ul className="chart-list">
             {chart.map((course) => (
               <li key={course.id}>
-                <a className="chart-item" href="#">
+                <a className="chart-item" href="/course/responsive-publishing">
                   <span className="chart-item__thumb-wrap">
                     <img
                       className="chart-item__thumb"

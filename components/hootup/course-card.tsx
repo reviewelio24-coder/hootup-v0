@@ -5,7 +5,7 @@ import { formatPrice } from '@/lib/hootup-data'
 
 export function CourseCard({ course }: { course: Course }) {
   const fullStars = Math.round(course.rating)
-  const href = course.href ?? '#'
+  const href = course.href ?? '/course/responsive-publishing'
 
   return (
     <article className="course-card">
