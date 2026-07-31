@@ -177,6 +177,8 @@ function categoryHref(slug: string, sub?: string) {
   if (slug === 'drawing-illust' && sub === '캘리그라피 & 레터링')
     return '/category/drawing-illust/calligraphy-lettering'
   if (slug === 'drawing-illust') return '/category/drawing-illust'
+  if (slug === 'fitness-mindfulness' && sub === '홈트 & 근력')
+    return '/category/fitness-mindfulness/home-training'
   if (slug === 'fitness-mindfulness') return '/category/fitness-mindfulness'
   return `/category/${slug}`
 }

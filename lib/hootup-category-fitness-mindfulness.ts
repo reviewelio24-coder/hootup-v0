@@ -183,6 +183,7 @@ export const fitnessMindfulnessSubcategoryRoutes: Partial<
   Record<FitnessMindfulnessSubcategory, string>
 > = {
   전체: '/category/fitness-mindfulness',
+  '홈트 & 근력': '/category/fitness-mindfulness/home-training',
 }
 
 export function getFitnessMindfulnessCoursesByPage(page: number): CategoryCourse[] {
