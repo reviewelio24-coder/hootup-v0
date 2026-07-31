@@ -182,6 +182,7 @@ export const COOKING_BAKING_TOTAL_PAGES = 1
 
 export const cookingBakingSubcategoryRoutes: Partial<Record<CookingBakingSubcategory, string>> = {
   전체: '/category/cooking-baking',
+  '집밥 & 한 끼 요리': '/category/cooking-baking/home-cooking',
 }
 
 export function getCookingBakingCoursesByPage(page: number): CategoryCourse[] {
