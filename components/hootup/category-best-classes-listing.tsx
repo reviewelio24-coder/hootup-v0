@@ -6,10 +6,13 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CourseCard } from './course-card'
 import {
   BEST_CLASSES_TOTAL_PAGES,
+  bestClassesDealRoutes,
   bestClassesSubcategories,
   bestClassesSubcategoryRoutes,
+  getBestClassesCoursesByDeal,
   getBestClassesCoursesByPage,
   getBestClassesCoursesBySubcategory,
+  type BestClassesDeal,
   type BestClassesSubcategory,
   type CategoryCourse,
 } from '@/lib/hootup-category-best-classes'
@@ -36,9 +39,13 @@ function sortCourses(list: CategoryCourse[], sort: (typeof SORT_OPTIONS)[number]
 
 type CategoryBestClassesListingProps = {
   lockedSub?: Exclude<BestClassesSubcategory, '전체'>
+  lockedDeal?: BestClassesDeal
 }
 
-export function CategoryBestClassesListing({ lockedSub }: CategoryBestClassesListingProps) {
+export function CategoryBestClassesListing({
+  lockedSub,
+  lockedDeal,
+}: CategoryBestClassesListingProps) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -47,12 +54,12 @@ export function CategoryBestClassesListing({ lockedSub }: CategoryBestClassesLis
   const [sub, setSub] = useState<BestClassesSubcategory>(lockedSub ?? '전체')
   const [sort, setSort] = useState<(typeof SORT_OPTIONS)[number]>('인기순')
   const [sortOpen, setSortOpen] = useState(false)
-  const [earlybird, setEarlybird] = useState(true)
-  const [eventDeal, setEventDeal] = useState(false)
 
   const activeSub = lockedSub ?? sub
-  const showPager = !lockedSub && activeSub === '전체'
-  const showDealFilters = activeSub === '전체'
+  const showPager = !lockedSub && !lockedDeal && activeSub === '전체'
+  const showDealFilters = activeSub === '전체' || Boolean(lockedDeal)
+  const earlybirdOn = lockedDeal === 'earlybird'
+  const eventDealOn = lockedDeal === 'event'
 
   const goToPage = (next: number) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -73,18 +80,16 @@ export function CategoryBestClassesListing({ lockedSub }: CategoryBestClassesLis
   }
 
   const courses = useMemo(() => {
-    let list: CategoryCourse[] = lockedSub
-      ? getBestClassesCoursesBySubcategory(lockedSub)
-      : activeSub === '전체'
-        ? [...getBestClassesCoursesByPage(page)]
-        : getBestClassesCoursesBySubcategory(activeSub)
+    let list: CategoryCourse[] = lockedDeal
+      ? getBestClassesCoursesByDeal(lockedDeal)
+      : lockedSub
+        ? getBestClassesCoursesBySubcategory(lockedSub)
+        : activeSub === '전체'
+          ? [...getBestClassesCoursesByPage(page)]
+          : getBestClassesCoursesBySubcategory(activeSub)
 
-    if (showDealFilters) {
-      if (earlybird) list = list.filter((c) => c.earlybird)
-      if (eventDeal) list = list.filter((c) => c.event)
-    }
     return sortCourses(list, sort)
-  }, [lockedSub, activeSub, page, sort, earlybird, eventDeal, showDealFilters])
+  }, [lockedDeal, lockedSub, activeSub, page, sort])
 
   return (
     <div className="category-page">
@@ -105,7 +110,10 @@ export function CategoryBestClassesListing({ lockedSub }: CategoryBestClassesLis
           </h2>
           <div className="category-page__subs-list" role="tablist" aria-label="세부 카테고리">
             {bestClassesSubcategories.map((item) => {
-              const active = activeSub === item
+              const active =
+                item === '전체'
+                  ? activeSub === '전체' || Boolean(lockedDeal)
+                  : !lockedDeal && activeSub === item
               const route = bestClassesSubcategoryRoutes[item]
               const className = `category-page__chip${active ? ' is-active' : ''}`
 
@@ -178,22 +186,20 @@ export function CategoryBestClassesListing({ lockedSub }: CategoryBestClassesLis
 
           {showDealFilters ? (
             <>
-              <button
-                type="button"
-                className={`category-page__filter-chip${earlybird ? ' is-on' : ''}`}
-                aria-pressed={earlybird}
-                onClick={() => setEarlybird((v) => !v)}
+              <Link
+                href={earlybirdOn ? '/category/best-classes' : bestClassesDealRoutes.earlybird}
+                className={`category-page__filter-chip${earlybirdOn ? ' is-on' : ''}`}
+                aria-pressed={earlybirdOn}
               >
                 얼리버드 할인
-              </button>
-              <button
-                type="button"
-                className={`category-page__filter-chip${eventDeal ? ' is-on' : ''}`}
-                aria-pressed={eventDeal}
-                onClick={() => setEventDeal((v) => !v)}
+              </Link>
+              <Link
+                href={eventDealOn ? '/category/best-classes' : bestClassesDealRoutes.event}
+                className={`category-page__filter-chip${eventDealOn ? ' is-on' : ''}`}
+                aria-pressed={eventDealOn}
               >
                 이벤트 할인
-              </button>
+              </Link>
             </>
           ) : null}
         </div>

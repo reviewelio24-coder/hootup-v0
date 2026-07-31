@@ -31,7 +31,7 @@ export const drawingIllustCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-ipad.png',
     avatar: '/figma/img/di-av-1.png',
     subcategory: '디지털 드로잉',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'di-watercolor',
@@ -59,7 +59,7 @@ export const drawingIllustCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-webtoon.png',
     avatar: '/figma/img/di-av-3.png',
     subcategory: '캐릭터 & 웹툰',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'di-calligraphy',
@@ -88,7 +88,6 @@ export const drawingIllustCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/di-av-5.png',
     subcategory: '캐릭터 & 웹툰',
     earlybird: true,
-    event: true,
   },
   {
     id: 'di-procreate',
@@ -116,7 +115,7 @@ export const drawingIllustCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-lettering.png',
     avatar: '/figma/img/di-av-7.png',
     subcategory: '캘리그라피 & 레터링',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'di-pen',
@@ -130,7 +129,7 @@ export const drawingIllustCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-pen.png',
     avatar: '/figma/img/di-av-8.png',
     subcategory: '손그림 & 회화',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'di-pencil',
@@ -158,7 +157,7 @@ export const drawingIllustCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-conti.png',
     avatar: '/figma/img/di-av-10.png',
     subcategory: '캐릭터 & 웹툰',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'di-clip',
@@ -172,7 +171,7 @@ export const drawingIllustCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-clip.png',
     avatar: '/figma/img/di-av-11.png',
     subcategory: '디지털 드로잉',
-    earlybird: true,
+    event: true,
   },
 ]
 
@@ -200,4 +199,17 @@ export function getDrawingIllustCoursesBySubcategory(
 ): CategoryCourse[] {
   if (sub === '전체') return getAllDrawingIllustCourses()
   return getAllDrawingIllustCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type DrawingIllustDeal = 'earlybird' | 'event'
+
+export const drawingIllustDealRoutes: Record<DrawingIllustDeal, string> = {
+  earlybird: '/category/drawing-illust/earlybird',
+  event: '/category/drawing-illust/event',
+}
+
+export function getDrawingIllustCoursesByDeal(deal: DrawingIllustDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllDrawingIllustCourses().filter((c) => c.earlybird)
+  return getAllDrawingIllustCourses().filter((c) => c.event)
 }

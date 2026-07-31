@@ -77,7 +77,6 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-premiere.png',
     avatar: '/figma/img/pv-av-3.png',
     subcategory: '사진 & 영상',
-    earlybird: true,
     event: true,
   },
   {
@@ -92,7 +91,7 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-ipad.png',
     avatar: '/figma/img/di-av-1.png',
     subcategory: '드로잉 & 일러스트',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'sig-fm-hometrain',
@@ -107,7 +106,6 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/fm-av-1.png',
     subcategory: '운동 & 마음챙김',
     earlybird: true,
-    event: true,
   },
   {
     id: 'sig-ch-leather',
@@ -121,7 +119,6 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-leather.png',
     avatar: '/figma/img/ch-av-1.png',
     subcategory: '공예 & 핸드메이드',
-    earlybird: true,
     event: true,
   },
   {
@@ -137,7 +134,6 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/cb-av-5.png',
     subcategory: '요리 & 베이킹',
     earlybird: true,
-    event: true,
   },
   {
     id: 'sig-react',
@@ -165,7 +161,6 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-perf.png',
     avatar: '/figma/img/cm-av-jin.png',
     subcategory: '커리어 & 머니',
-    earlybird: true,
     event: true,
   },
   {
@@ -208,7 +203,7 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-webtoon.png',
     avatar: '/figma/img/di-av-3.png',
     subcategory: '드로잉 & 일러스트',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'sig-fm-yoga',
@@ -222,7 +217,6 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/fm-yoga.png',
     avatar: '/figma/img/fm-av-2.png',
     subcategory: '운동 & 마음챙김',
-    earlybird: true,
     event: true,
   },
   {
@@ -251,7 +245,6 @@ export const signatureClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cb-baking.png',
     avatar: '/figma/img/cb-av-6.png',
     subcategory: '요리 & 베이킹',
-    earlybird: true,
     event: true,
   }
 ]
@@ -270,7 +263,7 @@ export const signatureClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cat-claude.png',
     avatar: '/figma/img/avatar-1.png',
     subcategory: '개발 & IT',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'sig-cm-side',
@@ -284,7 +277,7 @@ export const signatureClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm-side.png',
     avatar: '/figma/img/cm-av-min.png',
     subcategory: '커리어 & 머니',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'sig-dc-blender',
@@ -298,7 +291,6 @@ export const signatureClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc-blender.png',
     avatar: '/figma/img/cm-av-jay.png',
     subcategory: '디자인 & 크리에이티브',
-    earlybird: true,
     event: true,
   },
   {
@@ -341,7 +333,7 @@ export const signatureClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/fm-sleep.png',
     avatar: '/figma/img/fm-av-4.png',
     subcategory: '운동 & 마음챙김',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'sig-ch-candle',
@@ -355,7 +347,6 @@ export const signatureClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/ch-candle.png',
     avatar: '/figma/img/ch-av-3.png',
     subcategory: '공예 & 핸드메이드',
-    earlybird: true,
     event: true,
   },
   {
@@ -370,7 +361,7 @@ export const signatureClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cb-coffee.png',
     avatar: '/figma/img/cb-av-1.png',
     subcategory: '요리 & 베이킹',
-    earlybird: true,
+    event: true,
   }
 ]
 
@@ -394,4 +385,17 @@ export function getSignatureClassesCoursesBySubcategory(
 ): CategoryCourse[] {
   if (sub === '전체') return getAllSignatureClassesCourses()
   return getAllSignatureClassesCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type SignatureClassesDeal = 'earlybird' | 'event'
+
+export const signatureClassesDealRoutes: Record<SignatureClassesDeal, string> = {
+  earlybird: '/category/signature-classes/earlybird',
+  event: '/category/signature-classes/event',
+}
+
+export function getSignatureClassesCoursesByDeal(deal: SignatureClassesDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllSignatureClassesCourses().filter((c) => c.earlybird)
+  return getAllSignatureClassesCourses().filter((c) => c.event)
 }

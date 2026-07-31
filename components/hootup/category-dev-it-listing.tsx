@@ -6,12 +6,15 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CourseCard } from './course-card'
 import {
   DEV_IT_TOTAL_PAGES,
+  devItDealRoutes,
   devItSubcategories,
   devItSubcategoryRoutes,
+  getDevItCoursesByDeal,
   getDevItCoursesByPage,
   getDevItCoursesBySubcategory,
-  type CategoryCourse,
+  type DevItDeal,
   type DevItSubcategory,
+  type CategoryCourse,
 } from '@/lib/hootup-category-dev-it'
 
 const SORT_OPTIONS = ['인기순', '최신순', '평점순', '낮은 가격순'] as const
@@ -35,11 +38,14 @@ function sortCourses(list: CategoryCourse[], sort: (typeof SORT_OPTIONS)[number]
 }
 
 type CategoryDevItListingProps = {
-  /** 세부 카테고리 전용 페이지면 해당 이름, 대분류면 undefined */
   lockedSub?: Exclude<DevItSubcategory, '전체'>
+  lockedDeal?: DevItDeal
 }
 
-export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
+export function CategoryDevItListing({
+  lockedSub,
+  lockedDeal,
+}: CategoryDevItListingProps) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -48,12 +54,12 @@ export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
   const [sub, setSub] = useState<DevItSubcategory>(lockedSub ?? '전체')
   const [sort, setSort] = useState<(typeof SORT_OPTIONS)[number]>('인기순')
   const [sortOpen, setSortOpen] = useState(false)
-  const [earlybird, setEarlybird] = useState(true)
-  const [eventDeal, setEventDeal] = useState(false)
 
   const activeSub = lockedSub ?? sub
-  const showPager = !lockedSub
-  const showDealFilters = activeSub === '전체'
+  const showPager = !lockedSub && !lockedDeal
+  const showDealFilters = activeSub === '전체' || Boolean(lockedDeal)
+  const earlybirdOn = lockedDeal === 'earlybird'
+  const eventDealOn = lockedDeal === 'event'
 
   const goToPage = (next: number) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -74,18 +80,16 @@ export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
   }
 
   const courses = useMemo(() => {
-    let list: CategoryCourse[] = lockedSub
-      ? getDevItCoursesBySubcategory(lockedSub)
-      : activeSub === '전체'
-        ? [...getDevItCoursesByPage(page)]
-        : getDevItCoursesBySubcategory(activeSub)
+    let list: CategoryCourse[] = lockedDeal
+      ? getDevItCoursesByDeal(lockedDeal)
+      : lockedSub
+        ? getDevItCoursesBySubcategory(lockedSub)
+        : activeSub === '전체'
+          ? [...getDevItCoursesByPage(page)]
+          : getDevItCoursesBySubcategory(activeSub)
 
-    if (showDealFilters) {
-      if (earlybird) list = list.filter((c) => c.earlybird)
-      if (eventDeal) list = list.filter((c) => c.event)
-    }
     return sortCourses(list, sort)
-  }, [lockedSub, activeSub, page, sort, earlybird, eventDeal, showDealFilters])
+  }, [lockedDeal, lockedSub, activeSub, page, sort])
 
   return (
     <div className="category-page">
@@ -106,7 +110,10 @@ export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
           </h2>
           <div className="category-page__subs-list" role="tablist" aria-label="세부 카테고리">
             {devItSubcategories.map((item) => {
-              const active = activeSub === item
+              const active =
+                item === '전체'
+                  ? activeSub === '전체' || Boolean(lockedDeal)
+                  : !lockedDeal && activeSub === item
               const route = devItSubcategoryRoutes[item]
               const className = `category-page__chip${active ? ' is-active' : ''}`
 
@@ -118,6 +125,9 @@ export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
                     role="tab"
                     aria-selected={active}
                     className={className}
+                    onClick={() => {
+                      if (route === pathname) setSub(item)
+                    }}
                   >
                     {item}
                   </Link>
@@ -176,22 +186,20 @@ export function CategoryDevItListing({ lockedSub }: CategoryDevItListingProps) {
 
           {showDealFilters ? (
             <>
-              <button
-                type="button"
-                className={`category-page__filter-chip${earlybird ? ' is-on' : ''}`}
-                aria-pressed={earlybird}
-                onClick={() => setEarlybird((v) => !v)}
+              <Link
+                href={earlybirdOn ? '/category/dev-it' : devItDealRoutes.earlybird}
+                className={`category-page__filter-chip${earlybirdOn ? ' is-on' : ''}`}
+                aria-pressed={earlybirdOn}
               >
                 얼리버드 할인
-              </button>
-              <button
-                type="button"
-                className={`category-page__filter-chip${eventDeal ? ' is-on' : ''}`}
-                aria-pressed={eventDeal}
-                onClick={() => setEventDeal((v) => !v)}
+              </Link>
+              <Link
+                href={eventDealOn ? '/category/dev-it' : devItDealRoutes.event}
+                className={`category-page__filter-chip${eventDealOn ? ' is-on' : ''}`}
+                aria-pressed={eventDealOn}
               >
                 이벤트 할인
-              </button>
+              </Link>
             </>
           ) : null}
         </div>

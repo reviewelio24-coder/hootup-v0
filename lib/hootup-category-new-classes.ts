@@ -35,7 +35,7 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-claude.png',
     avatar: '/figma/img/avatar-1.png',
     subcategory: '개발 & IT',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-cm2-itjob',
@@ -49,7 +49,6 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm2-itjob.png',
     avatar: '/figma/img/cm-av-sua.png',
     subcategory: '커리어 & 머니',
-    earlybird: true,
     event: true,
   },
   {
@@ -78,7 +77,6 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-shortform.png',
     avatar: '/figma/img/pv-av-4.png',
     subcategory: '사진 & 영상',
-    earlybird: true,
     event: true,
   },
   {
@@ -135,7 +133,7 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm2-seo.png',
     avatar: '/figma/img/cm-av-hari.png',
     subcategory: '커리어 & 머니',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-di-lettering',
@@ -149,7 +147,7 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-lettering.png',
     avatar: '/figma/img/di-av-7.png',
     subcategory: '드로잉 & 일러스트',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-dc2-mobile',
@@ -163,7 +161,7 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc2-mobile.png',
     avatar: '/figma/img/cm-av-min.png',
     subcategory: '디자인 & 크리에이티브',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-fm-pilates',
@@ -177,7 +175,7 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/fm-pilates.png',
     avatar: '/figma/img/fm-av-9.png',
     subcategory: '운동 & 마음챙김',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-cursor',
@@ -219,7 +217,7 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-resin.png',
     avatar: '/figma/img/ch-av-7.png',
     subcategory: '공예 & 핸드메이드',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-dc2-c4d',
@@ -233,7 +231,7 @@ export const newClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc2-c4d.png',
     avatar: '/figma/img/cm-av-sua.png',
     subcategory: '디자인 & 크리에이티브',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-pv-davinci',
@@ -265,7 +263,7 @@ export const newClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/di-conti.png',
     avatar: '/figma/img/di-av-10.png',
     subcategory: '드로잉 & 일러스트',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-cm2-ebook',
@@ -279,7 +277,7 @@ export const newClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm2-ebook.png',
     avatar: '/figma/img/cm-av-min.png',
     subcategory: '커리어 & 머니',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-fm-stress',
@@ -308,7 +306,6 @@ export const newClassesCoursesPage2: CategoryCourse[] = [
     avatar: '/figma/img/avatar-2.png',
     subcategory: '개발 & IT',
     earlybird: true,
-    event: true,
   },
   {
     id: 'new-dc2-sns',
@@ -323,7 +320,6 @@ export const newClassesCoursesPage2: CategoryCourse[] = [
     avatar: '/figma/img/cm-av-doi.png',
     subcategory: '디자인 & 크리에이티브',
     earlybird: true,
-    event: true,
   },
   {
     id: 'new-cb-vegan',
@@ -351,7 +347,7 @@ export const newClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/pv-portrait.png',
     avatar: '/figma/img/pv-av-12.png',
     subcategory: '사진 & 영상',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'new-di-pencil',
@@ -387,4 +383,17 @@ export function getAllNewClassesCourses(): CategoryCourse[] {
 export function getNewClassesCoursesBySubcategory(sub: NewClassesSubcategory): CategoryCourse[] {
   if (sub === '전체') return getAllNewClassesCourses()
   return getAllNewClassesCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type NewClassesDeal = 'earlybird' | 'event'
+
+export const newClassesDealRoutes: Record<NewClassesDeal, string> = {
+  earlybird: '/category/new-classes/earlybird',
+  event: '/category/new-classes/event',
+}
+
+export function getNewClassesCoursesByDeal(deal: NewClassesDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllNewClassesCourses().filter((c) => c.earlybird)
+  return getAllNewClassesCourses().filter((c) => c.event)
 }

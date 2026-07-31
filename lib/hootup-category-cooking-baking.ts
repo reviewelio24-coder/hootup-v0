@@ -31,7 +31,7 @@ export const cookingBakingCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cb-coffee.png',
     avatar: '/figma/img/cb-av-1.png',
     subcategory: '홈카페 & 음료',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cb-banchan',
@@ -45,7 +45,7 @@ export const cookingBakingCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cb-banchan.png',
     avatar: '/figma/img/cb-av-2.png',
     subcategory: '집밥 & 한 끼 요리',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cb-vegan',
@@ -88,7 +88,6 @@ export const cookingBakingCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/cb-av-5.png',
     subcategory: '집밥 & 한 끼 요리',
     earlybird: true,
-    event: true,
   },
   {
     id: 'cb-baking',
@@ -102,7 +101,6 @@ export const cookingBakingCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cb-baking.png',
     avatar: '/figma/img/cb-av-6.png',
     subcategory: '베이킹 & 디저트',
-    earlybird: true,
     event: true,
   },
   {
@@ -118,7 +116,6 @@ export const cookingBakingCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/cb-av-7.png',
     subcategory: '홈카페 & 음료',
     earlybird: true,
-    event: true,
   },
   {
     id: 'cb-world',
@@ -132,7 +129,7 @@ export const cookingBakingCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cb-world.png',
     avatar: '/figma/img/cb-av-8.png',
     subcategory: '세계요리 & 비건',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cb-cookie',
@@ -146,7 +143,7 @@ export const cookingBakingCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cb-cookie.png',
     avatar: '/figma/img/cb-av-9.png',
     subcategory: '베이킹 & 디저트',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cb-korean',
@@ -202,4 +199,17 @@ export function getCookingBakingCoursesBySubcategory(
 ): CategoryCourse[] {
   if (sub === '전체') return getAllCookingBakingCourses()
   return getAllCookingBakingCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type CookingBakingDeal = 'earlybird' | 'event'
+
+export const cookingBakingDealRoutes: Record<CookingBakingDeal, string> = {
+  earlybird: '/category/cooking-baking/earlybird',
+  event: '/category/cooking-baking/event',
+}
+
+export function getCookingBakingCoursesByDeal(deal: CookingBakingDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllCookingBakingCourses().filter((c) => c.earlybird)
+  return getAllCookingBakingCourses().filter((c) => c.event)
 }

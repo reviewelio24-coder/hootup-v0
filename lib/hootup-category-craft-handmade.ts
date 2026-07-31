@@ -31,7 +31,6 @@ export const craftHandmadeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-leather.png',
     avatar: '/figma/img/ch-av-1.png',
     subcategory: '가죽 & 패브릭 공예',
-    earlybird: true,
     event: true,
   },
   {
@@ -60,7 +59,6 @@ export const craftHandmadeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-candle.png',
     avatar: '/figma/img/ch-av-3.png',
     subcategory: '캔들 & 플라워',
-    earlybird: true,
     event: true,
   },
   {
@@ -117,7 +115,7 @@ export const craftHandmadeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-resin.png',
     avatar: '/figma/img/ch-av-7.png',
     subcategory: '주얼리 & 데코 소품',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'ch-clay',
@@ -131,7 +129,7 @@ export const craftHandmadeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-clay.png',
     avatar: '/figma/img/ch-av-8.png',
     subcategory: '도예 & 점토',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'ch-wheel',
@@ -159,7 +157,7 @@ export const craftHandmadeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-embroidery.png',
     avatar: '/figma/img/ch-av-10.png',
     subcategory: '가죽 & 패브릭 공예',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'ch-flower',
@@ -173,7 +171,7 @@ export const craftHandmadeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-flower.png',
     avatar: '/figma/img/ch-av-11.png',
     subcategory: '캔들 & 플라워',
-    earlybird: true,
+    event: true,
   },
 ]
 
@@ -201,4 +199,17 @@ export function getCraftHandmadeCoursesBySubcategory(
 ): CategoryCourse[] {
   if (sub === '전체') return getAllCraftHandmadeCourses()
   return getAllCraftHandmadeCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type CraftHandmadeDeal = 'earlybird' | 'event'
+
+export const craftHandmadeDealRoutes: Record<CraftHandmadeDeal, string> = {
+  earlybird: '/category/craft-handmade/earlybird',
+  event: '/category/craft-handmade/event',
+}
+
+export function getCraftHandmadeCoursesByDeal(deal: CraftHandmadeDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllCraftHandmadeCourses().filter((c) => c.earlybird)
+  return getAllCraftHandmadeCourses().filter((c) => c.event)
 }

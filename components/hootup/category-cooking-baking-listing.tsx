@@ -6,10 +6,13 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CourseCard } from './course-card'
 import {
   COOKING_BAKING_TOTAL_PAGES,
+  cookingBakingDealRoutes,
   cookingBakingSubcategories,
   cookingBakingSubcategoryRoutes,
+  getCookingBakingCoursesByDeal,
   getCookingBakingCoursesByPage,
   getCookingBakingCoursesBySubcategory,
+  type CookingBakingDeal,
   type CookingBakingSubcategory,
   type CategoryCourse,
 } from '@/lib/hootup-category-cooking-baking'
@@ -36,9 +39,13 @@ function sortCourses(list: CategoryCourse[], sort: (typeof SORT_OPTIONS)[number]
 
 type CategoryCookingBakingListingProps = {
   lockedSub?: Exclude<CookingBakingSubcategory, '전체'>
+  lockedDeal?: CookingBakingDeal
 }
 
-export function CategoryCookingBakingListing({ lockedSub }: CategoryCookingBakingListingProps) {
+export function CategoryCookingBakingListing({
+  lockedSub,
+  lockedDeal,
+}: CategoryCookingBakingListingProps) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -47,12 +54,12 @@ export function CategoryCookingBakingListing({ lockedSub }: CategoryCookingBakin
   const [sub, setSub] = useState<CookingBakingSubcategory>(lockedSub ?? '전체')
   const [sort, setSort] = useState<(typeof SORT_OPTIONS)[number]>('인기순')
   const [sortOpen, setSortOpen] = useState(false)
-  const [earlybird, setEarlybird] = useState(true)
-  const [eventDeal, setEventDeal] = useState(false)
 
   const activeSub = lockedSub ?? sub
-  const showPager = !lockedSub
-  const showDealFilters = activeSub === '전체'
+  const showPager = !lockedSub && !lockedDeal
+  const showDealFilters = activeSub === '전체' || Boolean(lockedDeal)
+  const earlybirdOn = lockedDeal === 'earlybird'
+  const eventDealOn = lockedDeal === 'event'
 
   const goToPage = (next: number) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -73,18 +80,16 @@ export function CategoryCookingBakingListing({ lockedSub }: CategoryCookingBakin
   }
 
   const courses = useMemo(() => {
-    let list: CategoryCourse[] = lockedSub
-      ? getCookingBakingCoursesBySubcategory(lockedSub)
-      : activeSub === '전체'
-        ? [...getCookingBakingCoursesByPage(page)]
-        : getCookingBakingCoursesBySubcategory(activeSub)
+    let list: CategoryCourse[] = lockedDeal
+      ? getCookingBakingCoursesByDeal(lockedDeal)
+      : lockedSub
+        ? getCookingBakingCoursesBySubcategory(lockedSub)
+        : activeSub === '전체'
+          ? [...getCookingBakingCoursesByPage(page)]
+          : getCookingBakingCoursesBySubcategory(activeSub)
 
-    if (showDealFilters) {
-      if (earlybird) list = list.filter((c) => c.earlybird)
-      if (eventDeal) list = list.filter((c) => c.event)
-    }
     return sortCourses(list, sort)
-  }, [lockedSub, activeSub, page, sort, earlybird, eventDeal, showDealFilters])
+  }, [lockedDeal, lockedSub, activeSub, page, sort])
 
   return (
     <div className="category-page">
@@ -105,7 +110,10 @@ export function CategoryCookingBakingListing({ lockedSub }: CategoryCookingBakin
           </h2>
           <div className="category-page__subs-list" role="tablist" aria-label="세부 카테고리">
             {cookingBakingSubcategories.map((item) => {
-              const active = activeSub === item
+              const active =
+                item === '전체'
+                  ? activeSub === '전체' || Boolean(lockedDeal)
+                  : !lockedDeal && activeSub === item
               const route = cookingBakingSubcategoryRoutes[item]
               const className = `category-page__chip${active ? ' is-active' : ''}`
 
@@ -178,22 +186,20 @@ export function CategoryCookingBakingListing({ lockedSub }: CategoryCookingBakin
 
           {showDealFilters ? (
             <>
-              <button
-                type="button"
-                className={`category-page__filter-chip${earlybird ? ' is-on' : ''}`}
-                aria-pressed={earlybird}
-                onClick={() => setEarlybird((v) => !v)}
+              <Link
+                href={earlybirdOn ? '/category/cooking-baking' : cookingBakingDealRoutes.earlybird}
+                className={`category-page__filter-chip${earlybirdOn ? ' is-on' : ''}`}
+                aria-pressed={earlybirdOn}
               >
                 얼리버드 할인
-              </button>
-              <button
-                type="button"
-                className={`category-page__filter-chip${eventDeal ? ' is-on' : ''}`}
-                aria-pressed={eventDeal}
-                onClick={() => setEventDeal((v) => !v)}
+              </Link>
+              <Link
+                href={eventDealOn ? '/category/cooking-baking' : cookingBakingDealRoutes.event}
+                className={`category-page__filter-chip${eventDealOn ? ' is-on' : ''}`}
+                aria-pressed={eventDealOn}
               >
                 이벤트 할인
-              </button>
+              </Link>
             </>
           ) : null}
         </div>
@@ -228,6 +234,14 @@ export function CategoryCookingBakingListing({ lockedSub }: CategoryCookingBakin
               onClick={() => goToPage(1)}
             >
               1
+            </button>
+            <button
+              type="button"
+              className={`category-page__page${page === 2 ? ' is-active' : ''}`}
+              aria-current={page === 2 ? 'page' : undefined}
+              onClick={() => goToPage(2)}
+            >
+              2
             </button>
             <button
               type="button"

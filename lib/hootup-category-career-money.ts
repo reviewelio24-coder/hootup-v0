@@ -47,7 +47,6 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-insta.png',
     avatar: '/figma/img/cm-av-hari.png',
     subcategory: '마케팅 & 브랜딩',
-    earlybird: true,
     event: true,
   },
   {
@@ -62,7 +61,7 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-side.png',
     avatar: '/figma/img/cm-av-min.png',
     subcategory: '사이드프로젝트 & N잡',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm-stock',
@@ -76,7 +75,7 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-stock.png',
     avatar: '/figma/img/cm-av-jay.png',
     subcategory: '재테크 & 투자',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm-content',
@@ -104,7 +103,7 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-report.png',
     avatar: '/figma/img/cm-av-han.png',
     subcategory: '직무역량 & 일잘러',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm-asset',
@@ -146,7 +145,6 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-startup.png',
     avatar: '/figma/img/cm-av-doi.png',
     subcategory: '사이드프로젝트 & N잡',
-    earlybird: true,
     event: true,
   },
   {
@@ -161,7 +159,7 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-tax.png',
     avatar: '/figma/img/cm-av-hanul.png',
     subcategory: '절세 & 머니 관리',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm-decision',
@@ -189,7 +187,6 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-perf.png',
     avatar: '/figma/img/cm-av-jin.png',
     subcategory: '마케팅 & 브랜딩',
-    earlybird: true,
     event: true,
   },
   {
@@ -204,7 +201,6 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-tools.png',
     avatar: '/figma/img/cm-av-bona.png',
     subcategory: '직무역량 & 일잘러',
-    earlybird: true,
     event: true,
   },
   {
@@ -234,7 +230,6 @@ export const careerMoneyCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/cm-av-garam.png',
     subcategory: '사이드프로젝트 & N잡',
     earlybird: true,
-    event: true,
   },
   {
     id: 'cm-notion',
@@ -280,7 +275,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm2-seo.png',
     avatar: '/figma/img/cm-av-hari.png',
     subcategory: '마케팅 & 브랜딩',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm2-ebook',
@@ -294,7 +289,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm2-ebook.png',
     avatar: '/figma/img/cm-av-min.png',
     subcategory: '사이드프로젝트 & N잡',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm2-interview',
@@ -308,7 +303,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm2-interview.png',
     avatar: '/figma/img/cm-av-jay.png',
     subcategory: '취업 & 이직',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm2-estate',
@@ -322,7 +317,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm2-estate.png',
     avatar: '/figma/img/cm-av-min2.png',
     subcategory: '재테크 & 투자',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm2-budget',
@@ -350,7 +345,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm2-writing.png',
     avatar: '/figma/img/cm-av-rin.png',
     subcategory: '직무역량 & 일잘러',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cm2-career',
@@ -406,7 +401,6 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm2-itjob.png',
     avatar: '/figma/img/cm-av-sua.png',
     subcategory: '취업 & 이직',
-    earlybird: true,
     event: true,
   },
   {
@@ -449,7 +443,7 @@ export const careerMoneyCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cm2-tax.png',
     avatar: '/figma/img/cm-av-soeul.png',
     subcategory: '절세 & 머니 관리',
-    earlybird: true,
+    event: true,
   },
 ]
 
@@ -478,3 +472,16 @@ export function getCareerMoneyCoursesBySubcategory(sub: CareerMoneySubcategory):
   if (sub === '전체') return getAllCareerMoneyCourses()
   return getAllCareerMoneyCourses().filter((c) => c.subcategory === sub)
 }
+
+export type CareerMoneyDeal = 'earlybird' | 'event'
+
+export const careerMoneyDealRoutes: Record<CareerMoneyDeal, string> = {
+  earlybird: '/category/career-money/earlybird',
+  event: '/category/career-money/event',
+}
+
+export function getCareerMoneyCoursesByDeal(deal: CareerMoneyDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllCareerMoneyCourses().filter((c) => c.earlybird)
+  return getAllCareerMoneyCourses().filter((c) => c.event)
+}
+

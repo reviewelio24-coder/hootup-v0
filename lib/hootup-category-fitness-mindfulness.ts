@@ -32,7 +32,6 @@ export const fitnessMindfulnessCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/fm-av-1.png',
     subcategory: '홈트 & 근력',
     earlybird: true,
-    event: true,
   },
   {
     id: 'fm-yoga',
@@ -46,7 +45,6 @@ export const fitnessMindfulnessCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/fm-yoga.png',
     avatar: '/figma/img/fm-av-2.png',
     subcategory: '요가 & 필라테스',
-    earlybird: true,
     event: true,
   },
   {
@@ -75,7 +73,7 @@ export const fitnessMindfulnessCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/fm-sleep.png',
     avatar: '/figma/img/fm-av-4.png',
     subcategory: '명상 & 마음챙김',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'fm-cardio',
@@ -89,7 +87,7 @@ export const fitnessMindfulnessCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/fm-cardio.png',
     avatar: '/figma/img/fm-av-5.png',
     subcategory: '러닝 & 유산소',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'fm-strength',
@@ -103,7 +101,7 @@ export const fitnessMindfulnessCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/fm-strength.png',
     avatar: '/figma/img/fm-av-6.png',
     subcategory: '홈트 & 근력',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'fm-stress',
@@ -145,7 +143,7 @@ export const fitnessMindfulnessCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/fm-pilates.png',
     avatar: '/figma/img/fm-av-9.png',
     subcategory: '요가 & 필라테스',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'fm-diet',
@@ -203,4 +201,17 @@ export function getFitnessMindfulnessCoursesBySubcategory(
 ): CategoryCourse[] {
   if (sub === '전체') return getAllFitnessMindfulnessCourses()
   return getAllFitnessMindfulnessCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type FitnessMindfulnessDeal = 'earlybird' | 'event'
+
+export const fitnessMindfulnessDealRoutes: Record<FitnessMindfulnessDeal, string> = {
+  earlybird: '/category/fitness-mindfulness/earlybird',
+  event: '/category/fitness-mindfulness/event',
+}
+
+export function getFitnessMindfulnessCoursesByDeal(deal: FitnessMindfulnessDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllFitnessMindfulnessCourses().filter((c) => c.earlybird)
+  return getAllFitnessMindfulnessCourses().filter((c) => c.event)
 }

@@ -2231,7 +2231,12 @@ body:has(.hootup),
   background: var(--hoot-surface-soft);
   color: var(--hoot-brand);
 }
-.category-page__filter-chip {
+.category-page__filter-chip,
+a.category-page__filter-chip,
+a.category-page__filter-chip:link,
+a.category-page__filter-chip:visited,
+a.category-page__filter-chip:hover,
+a.category-page__filter-chip:active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2246,8 +2251,14 @@ body:has(.hootup),
   line-height: 22px;
   cursor: pointer;
   white-space: nowrap;
+  text-decoration: none;
 }
-.category-page__filter-chip.is-on {
+.category-page__filter-chip.is-on,
+a.category-page__filter-chip.is-on,
+a.category-page__filter-chip.is-on:link,
+a.category-page__filter-chip.is-on:visited,
+a.category-page__filter-chip.is-on:hover,
+a.category-page__filter-chip.is-on:active {
   border-color: var(--hoot-brand);
   color: var(--hoot-brand);
 }

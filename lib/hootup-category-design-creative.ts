@@ -48,7 +48,6 @@ export const designCreativeCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/cm-av-hari.png',
     subcategory: '그래픽 디자인',
     earlybird: true,
-    event: true,
   },
   {
     id: 'dc-logo',
@@ -76,7 +75,6 @@ export const designCreativeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc-blender.png',
     avatar: '/figma/img/cm-av-jay.png',
     subcategory: '3D & 모션 디자인',
-    earlybird: true,
     event: true,
   },
   {
@@ -105,7 +103,6 @@ export const designCreativeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc-uxsys.png',
     avatar: '/figma/img/cm-av-han.png',
     subcategory: 'UX/UI 디자인',
-    earlybird: true,
     event: true,
   },
   {
@@ -120,7 +117,7 @@ export const designCreativeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc-vector.png',
     avatar: '/figma/img/cm-av-rin.png',
     subcategory: '그래픽 디자인',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc-identity',
@@ -134,7 +131,7 @@ export const designCreativeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc-identity.png',
     avatar: '/figma/img/cm-av-yun.png',
     subcategory: '브랜딩 & 로고',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc-ae',
@@ -162,7 +159,7 @@ export const designCreativeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc-bg.png',
     avatar: '/figma/img/cm-av-hanul.png',
     subcategory: '일러스트 & 디지털아트',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc-color',
@@ -204,7 +201,7 @@ export const designCreativeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc-basic.png',
     avatar: '/figma/img/cm-av-bona.png',
     subcategory: '크리에이티브 입문',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc-typo',
@@ -246,7 +243,7 @@ export const designCreativeCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/dc-render.png',
     avatar: '/figma/img/cm-av-bona2.png',
     subcategory: '3D & 모션 디자인',
-    earlybird: true,
+    event: true,
   },
 ]
 
@@ -278,7 +275,7 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc2-uiport.png',
     avatar: '/figma/img/cm-av-hari.png',
     subcategory: '크리에이티브 입문',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc2-mobile',
@@ -292,7 +289,7 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc2-mobile.png',
     avatar: '/figma/img/cm-av-min.png',
     subcategory: 'UX/UI 디자인',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc2-indesign',
@@ -306,7 +303,7 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc2-indesign.png',
     avatar: '/figma/img/cm-av-jay.png',
     subcategory: '그래픽 디자인',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc2-package',
@@ -320,7 +317,7 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc2-package.png',
     avatar: '/figma/img/cm-av-min2.png',
     subcategory: '브랜딩 & 로고',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc2-motionlogo',
@@ -348,7 +345,7 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc2-coloring.png',
     avatar: '/figma/img/cm-av-rin.png',
     subcategory: '일러스트 & 디지털아트',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc2-landing',
@@ -377,7 +374,6 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     avatar: '/figma/img/cm-av-doi.png',
     subcategory: '그래픽 디자인',
     earlybird: true,
-    event: true,
   },
   {
     id: 'dc2-naming',
@@ -405,7 +401,7 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc2-c4d.png',
     avatar: '/figma/img/cm-av-sua.png',
     subcategory: '3D & 모션 디자인',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'dc2-emoji',
@@ -433,7 +429,6 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc2-job.png',
     avatar: '/figma/img/cm-av-bona.png',
     subcategory: 'UX/UI 디자인',
-    earlybird: true,
     event: true,
   },
   {
@@ -448,7 +443,7 @@ export const designCreativeCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/dc2-retouch.png',
     avatar: '/figma/img/cm-av-soeul.png',
     subcategory: '그래픽 디자인',
-    earlybird: true,
+    event: true,
   },
 ]
 
@@ -478,4 +473,17 @@ export function getDesignCreativeCoursesBySubcategory(
 ): CategoryCourse[] {
   if (sub === '전체') return getAllDesignCreativeCourses()
   return getAllDesignCreativeCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type DesignCreativeDeal = 'earlybird' | 'event'
+
+export const designCreativeDealRoutes: Record<DesignCreativeDeal, string> = {
+  earlybird: '/category/design-creative/earlybird',
+  event: '/category/design-creative/event',
+}
+
+export function getDesignCreativeCoursesByDeal(deal: DesignCreativeDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllDesignCreativeCourses().filter((c) => c.earlybird)
+  return getAllDesignCreativeCourses().filter((c) => c.event)
 }

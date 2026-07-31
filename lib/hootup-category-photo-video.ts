@@ -59,7 +59,6 @@ export const photoVideoCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-premiere.png',
     avatar: '/figma/img/pv-av-3.png',
     subcategory: '편집 & 후보정',
-    earlybird: true,
     event: true,
   },
   {
@@ -74,7 +73,6 @@ export const photoVideoCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-shortform.png',
     avatar: '/figma/img/pv-av-4.png',
     subcategory: '모션 & 크리에이티브',
-    earlybird: true,
     event: true,
   },
   {
@@ -103,7 +101,7 @@ export const photoVideoCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-camera.png',
     avatar: '/figma/img/pv-av-6.png',
     subcategory: '사진 촬영',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'pv-ae',
@@ -131,7 +129,7 @@ export const photoVideoCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-cinematic.png',
     avatar: '/figma/img/pv-av-8.png',
     subcategory: '영상 촬영',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'pv-lighting',
@@ -173,7 +171,7 @@ export const photoVideoCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-lightroom.png',
     avatar: '/figma/img/pv-av-11.png',
     subcategory: '편집 & 후보정',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'pv-portrait',
@@ -187,7 +185,7 @@ export const photoVideoCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-portrait.png',
     avatar: '/figma/img/pv-av-12.png',
     subcategory: '사진 촬영',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'pv-cut',
@@ -227,4 +225,17 @@ export function getAllPhotoVideoCourses(): CategoryCourse[] {
 export function getPhotoVideoCoursesBySubcategory(sub: PhotoVideoSubcategory): CategoryCourse[] {
   if (sub === '전체') return getAllPhotoVideoCourses()
   return getAllPhotoVideoCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type PhotoVideoDeal = 'earlybird' | 'event'
+
+export const photoVideoDealRoutes: Record<PhotoVideoDeal, string> = {
+  earlybird: '/category/photo-video/earlybird',
+  event: '/category/photo-video/event',
+}
+
+export function getPhotoVideoCoursesByDeal(deal: PhotoVideoDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllPhotoVideoCourses().filter((c) => c.earlybird)
+  return getAllPhotoVideoCourses().filter((c) => c.event)
 }

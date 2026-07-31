@@ -50,7 +50,7 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-js-core.png',
     avatar: AV1,
     subcategory: '프론트엔드',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'nodejs',
@@ -64,7 +64,7 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-nodejs.png',
     avatar: AV2,
     subcategory: '백엔드 & 서버',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'flutter',
@@ -78,7 +78,7 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-flutter.png',
     avatar: AV1,
     subcategory: '모바일 & 앱 개발',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'python-data',
@@ -93,7 +93,6 @@ export const devItCoursesPage1: CategoryCourse[] = [
     avatar: AV2,
     subcategory: '데이터 & AI',
     earlybird: true,
-    event: true,
   },
   {
     id: 'claude',
@@ -107,7 +106,7 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-claude.png',
     avatar: AV1,
     subcategory: 'AI 개발 도구',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'nocode',
@@ -121,7 +120,6 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-nocode.png',
     avatar: AV2,
     subcategory: '노코드 & 자동화',
-    earlybird: true,
     event: true,
   },
   {
@@ -150,7 +148,7 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-pandas.png',
     avatar: AV2,
     subcategory: '데이터 & AI',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'vibe',
@@ -178,7 +176,7 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-js-vanilla.png',
     avatar: AV1,
     subcategory: '프론트엔드',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'css',
@@ -193,7 +191,6 @@ export const devItCoursesPage1: CategoryCourse[] = [
     avatar: AV1,
     subcategory: '웹 퍼블리싱',
     earlybird: true,
-    event: true,
   },
   {
     id: 'htmlcss',
@@ -207,7 +204,7 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-htmlcss.png',
     avatar: AV1,
     subcategory: '웹 퍼블리싱',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'automation',
@@ -235,7 +232,7 @@ export const devItCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-pair.png',
     avatar: AV1,
     subcategory: 'AI 개발 도구',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'cursor',
@@ -267,7 +264,7 @@ export const devItCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cat2-a11y.png',
     avatar: AV1,
     subcategory: '웹 퍼블리싱',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'vue',
@@ -296,7 +293,6 @@ export const devItCoursesPage2: CategoryCourse[] = [
     avatar: AV1,
     subcategory: '백엔드 & 서버',
     earlybird: true,
-    event: true,
   },
   {
     id: 'rn',
@@ -338,7 +334,6 @@ export const devItCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cat2-nocode.png',
     avatar: AV2,
     subcategory: '노코드 & 자동화',
-    earlybird: true,
     event: true,
   },
   {
@@ -353,7 +348,7 @@ export const devItCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cat2-chatbot.png',
     avatar: AV1,
     subcategory: '데이터 & AI',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'rest-api',
@@ -367,7 +362,7 @@ export const devItCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cat2-rest.png',
     avatar: AV2,
     subcategory: '백엔드 & 서버',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'typescript',
@@ -381,7 +376,7 @@ export const devItCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cat2-ts.png',
     avatar: AV1,
     subcategory: '프론트엔드',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'sass',
@@ -423,7 +418,7 @@ export const devItCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/cat2-swift.png',
     avatar: AV2,
     subcategory: '모바일 & 앱 개발',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'docker',
@@ -452,7 +447,6 @@ export const devItCoursesPage2: CategoryCourse[] = [
     avatar: AV2,
     subcategory: '프론트엔드',
     earlybird: true,
-    event: true,
   },
 ]
 
@@ -481,4 +475,17 @@ export function getAllDevItCourses(): CategoryCourse[] {
 export function getDevItCoursesBySubcategory(sub: DevItSubcategory): CategoryCourse[] {
   if (sub === '전체') return getAllDevItCourses()
   return getAllDevItCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type DevItDeal = 'earlybird' | 'event'
+
+export const devItDealRoutes: Record<DevItDeal, string> = {
+  earlybird: '/category/dev-it/earlybird',
+  event: '/category/dev-it/event',
+}
+
+export function getDevItCoursesByDeal(deal: DevItDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllDevItCourses().filter((c) => c.earlybird)
+  return getAllDevItCourses().filter((c) => c.event)
 }

@@ -35,7 +35,7 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-htmlcss.png',
     avatar: '/figma/img/avatar-1.png',
     subcategory: '개발 & IT',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'best-cm-insta',
@@ -49,7 +49,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-insta.png',
     avatar: '/figma/img/cm-av-hari.png',
     subcategory: '커리어 & 머니',
-    earlybird: true,
     event: true,
   },
   {
@@ -92,7 +91,7 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/di-ipad.png',
     avatar: '/figma/img/di-av-1.png',
     subcategory: '드로잉 & 일러스트',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'best-fm-hometrain',
@@ -107,7 +106,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/fm-av-1.png',
     subcategory: '운동 & 마음챙김',
     earlybird: true,
-    event: true,
   },
   {
     id: 'best-ch-candle',
@@ -121,7 +119,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-candle.png',
     avatar: '/figma/img/ch-av-3.png',
     subcategory: '공예 & 핸드메이드',
-    earlybird: true,
     event: true,
   },
   {
@@ -137,7 +134,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/cb-av-5.png',
     subcategory: '요리 & 베이킹',
     earlybird: true,
-    event: true,
   },
   {
     id: 'best-js-core',
@@ -151,7 +147,7 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cat-js-core.png',
     avatar: '/figma/img/avatar-1.png',
     subcategory: '개발 & IT',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'best-cm-side',
@@ -165,7 +161,7 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cm-side.png',
     avatar: '/figma/img/cm-av-min.png',
     subcategory: '커리어 & 머니',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'best-dc-ps',
@@ -180,7 +176,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/cm-av-hari.png',
     subcategory: '디자인 & 크리에이티브',
     earlybird: true,
-    event: true,
   },
   {
     id: 'best-pv-premiere',
@@ -194,7 +189,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/pv-premiere.png',
     avatar: '/figma/img/pv-av-3.png',
     subcategory: '사진 & 영상',
-    earlybird: true,
     event: true,
   },
   {
@@ -210,7 +204,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     avatar: '/figma/img/di-av-5.png',
     subcategory: '드로잉 & 일러스트',
     earlybird: true,
-    event: true,
   },
   {
     id: 'best-fm-yoga',
@@ -224,7 +217,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/fm-yoga.png',
     avatar: '/figma/img/fm-av-2.png',
     subcategory: '운동 & 마음챙김',
-    earlybird: true,
     event: true,
   },
   {
@@ -239,7 +231,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/ch-leather.png',
     avatar: '/figma/img/ch-av-1.png',
     subcategory: '공예 & 핸드메이드',
-    earlybird: true,
     event: true,
   },
   {
@@ -254,7 +245,6 @@ export const bestClassesCoursesPage1: CategoryCourse[] = [
     thumb: '/figma/img/cb-baking.png',
     avatar: '/figma/img/cb-av-6.png',
     subcategory: '요리 & 베이킹',
-    earlybird: true,
     event: true,
   }
 ]
@@ -343,7 +333,7 @@ export const bestClassesCoursesPage2: CategoryCourse[] = [
     thumb: '/figma/img/fm-sleep.png',
     avatar: '/figma/img/fm-av-4.png',
     subcategory: '운동 & 마음챙김',
-    earlybird: true,
+    event: true,
   },
   {
     id: 'best-ch-knit',
@@ -372,7 +362,6 @@ export const bestClassesCoursesPage2: CategoryCourse[] = [
     avatar: '/figma/img/cb-av-7.png',
     subcategory: '요리 & 베이킹',
     earlybird: true,
-    event: true,
   }
 ]
 
@@ -394,4 +383,17 @@ export function getAllBestClassesCourses(): CategoryCourse[] {
 export function getBestClassesCoursesBySubcategory(sub: BestClassesSubcategory): CategoryCourse[] {
   if (sub === '전체') return getAllBestClassesCourses()
   return getAllBestClassesCourses().filter((c) => c.subcategory === sub)
+}
+
+
+export type BestClassesDeal = 'earlybird' | 'event'
+
+export const bestClassesDealRoutes: Record<BestClassesDeal, string> = {
+  earlybird: '/category/best-classes/earlybird',
+  event: '/category/best-classes/event',
+}
+
+export function getBestClassesCoursesByDeal(deal: BestClassesDeal): CategoryCourse[] {
+  if (deal === 'earlybird') return getAllBestClassesCourses().filter((c) => c.earlybird)
+  return getAllBestClassesCourses().filter((c) => c.event)
 }
