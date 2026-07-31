@@ -105,7 +105,9 @@ export function SiteHeader() {
                         ? '/category/best-classes'
                         : item === '새로운 클래스'
                           ? '/category/new-classes'
-                          : '#'
+                          : item === '시그니쳐 클래스'
+                            ? '/category/signature-classes'
+                            : '#'
                     }
                     onClick={closeGnb}
                   >
