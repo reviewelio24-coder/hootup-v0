@@ -190,6 +190,8 @@ function categoryHref(slug: string, sub?: string) {
     return '/category/craft-handmade/leather-fabric'
   if (slug === 'craft-handmade' && sub === '도예 & 점토')
     return '/category/craft-handmade/pottery-clay'
+  if (slug === 'craft-handmade' && sub === '캔들 & 플라워')
+    return '/category/craft-handmade/candle-flower'
   if (slug === 'craft-handmade') return '/category/craft-handmade'
   return `/category/${slug}`
 }
