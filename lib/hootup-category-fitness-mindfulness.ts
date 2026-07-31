@@ -186,6 +186,7 @@ export const fitnessMindfulnessSubcategoryRoutes: Partial<
   '홈트 & 근력': '/category/fitness-mindfulness/home-training',
   '요가 & 필라테스': '/category/fitness-mindfulness/yoga-pilates',
   '러닝 & 유산소': '/category/fitness-mindfulness/running',
+  '명상 & 마음챙김': '/category/fitness-mindfulness/meditation',
 }
 
 export function getFitnessMindfulnessCoursesByPage(page: number): CategoryCourse[] {

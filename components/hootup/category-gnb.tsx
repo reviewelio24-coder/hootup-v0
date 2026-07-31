@@ -183,6 +183,8 @@ function categoryHref(slug: string, sub?: string) {
     return '/category/fitness-mindfulness/yoga-pilates'
   if (slug === 'fitness-mindfulness' && sub === '러닝 & 유산소')
     return '/category/fitness-mindfulness/running'
+  if (slug === 'fitness-mindfulness' && sub === '명상 & 마음챙김')
+    return '/category/fitness-mindfulness/meditation'
   if (slug === 'fitness-mindfulness') return '/category/fitness-mindfulness'
   return `/category/${slug}`
 }
