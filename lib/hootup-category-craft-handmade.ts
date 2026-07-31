@@ -181,6 +181,7 @@ export const CRAFT_HANDMADE_TOTAL_PAGES = 1
 
 export const craftHandmadeSubcategoryRoutes: Partial<Record<CraftHandmadeSubcategory, string>> = {
   전체: '/category/craft-handmade',
+  '가죽 & 패브릭 공예': '/category/craft-handmade/leather-fabric',
 }
 
 export function getCraftHandmadeCoursesByPage(page: number): CategoryCourse[] {
