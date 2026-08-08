@@ -392,29 +392,52 @@ export const news: News[] = [
   },
 ]
 
-export const footerLinks = [
+export type FooterLink = {
+  label: string
+  href?: string
+}
+
+export const footerLinks: { title: string; links: FooterLink[] }[] = [
   {
     title: 'HOOT UP',
-    links: ['브랜드 스토리', '훗업 데스크(뉴스)', '훗업 매거진(블로그)', '단체 교육 (B2B)', '채용 안내'],
+    links: [
+      { label: '브랜드 스토리' },
+      { label: '훗업 데스크(뉴스)' },
+      { label: '훗업 매거진(블로그)', href: '/magazine' },
+      { label: '단체 교육 (B2B)' },
+      { label: '채용 안내' },
+    ],
   },
   {
     title: '둘러보기',
     links: [
-      '전체 카테고리',
-      '훗업 차트(베스트)',
-      '갓 부화한 클래스',
-      '훗업 페스타(이벤트)',
-      '레벨업 로드맵',
-      '올나잇 패스(구독)',
+      { label: '전체 카테고리' },
+      { label: '훗업 차트(베스트)', href: '/category/best-classes' },
+      { label: '갓 부화한 클래스', href: '/category/new-classes' },
+      { label: '훗업 페스타(이벤트)' },
+      { label: '레벨업 로드맵' },
+      { label: '올나잇 패스(구독)' },
     ],
   },
   {
     title: '크리에이터 지원',
-    links: ['클래스 개설 문의하기', '크리에이터 가이드', '스튜디오 대여', '정산・수익 안내', '멘토 교육 지원'],
+    links: [
+      { label: '클래스 개설 문의하기' },
+      { label: '크리에이터 가이드' },
+      { label: '스튜디오 대여' },
+      { label: '정산・수익 안내' },
+      { label: '멘토 교육 지원' },
+    ],
   },
   {
     title: '고객센터',
-    links: ['공지사항', '자주 묻는 질문(FAQ)', '이용약관', '개인정보처리방침', '환불 규정'],
+    links: [
+      { label: '공지사항' },
+      { label: '자주 묻는 질문(FAQ)' },
+      { label: '이용약관' },
+      { label: '개인정보처리방침' },
+      { label: '환불 규정' },
+    ],
   },
 ]
 

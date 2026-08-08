@@ -11,7 +11,7 @@ export function InsightSection() {
             </h2>
             <p className="collection__subtitle">배움과 성장에 관한 크리에이터들의 생각</p>
           </div>
-          <a className="collection__more" href="#">
+          <a className="collection__more" href="/magazine">
             매거진 더보기
             <img src="/figma/chevron-right.svg" alt="" width={14} height={14} aria-hidden="true" />
           </a>
@@ -21,7 +21,7 @@ export function InsightSection() {
           {magazines.map((item) => (
             <li key={item.id}>
               <article className="mag-card">
-                <a href="#" aria-label={`${item.title} 읽기`}>
+                <a href="/magazine" aria-label={`${item.title} 읽기`}>
                   <img
                     className="mag-card__thumb"
                     src={item.thumb || '/placeholder.svg'}
@@ -31,7 +31,7 @@ export function InsightSection() {
                 </a>
                 <span className="mag-card__tag">{item.tag}</span>
                 <h3 className="mag-card__title">
-                  <a href="#">{item.title}</a>
+                  <a href="/magazine">{item.title}</a>
                 </h3>
                 <p className="mag-card__desc">{item.desc}</p>
                 <div className="mag-card__foot">

@@ -16,8 +16,8 @@ export function SiteFooter() {
               <ul className="footer-col" key={group.title}>
                 <li className="footer-col__title">{group.title}</li>
                 {group.links.map((link) => (
-                  <li key={link}>
-                    <a href="#">{link}</a>
+                  <li key={link.label}>
+                    <a href={link.href ?? '#'}>{link.label}</a>
                   </li>
                 ))}
               </ul>
