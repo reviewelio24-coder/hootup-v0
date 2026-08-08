@@ -80,42 +80,25 @@ export function SiteHeader() {
             />
           </button>
           <ul className="nav-menu">
-            {navItems.map((item, i) => {
-              if (i === 0) {
-                return (
-                  <li key={item}>
-                    <button
-                      type="button"
-                      className={`nav-menu__link nav-menu__link--btn${gnbOpen ? ' nav-menu__link--active' : ''}`}
-                      aria-expanded={gnbOpen}
-                      aria-controls={gnbId}
-                      onClick={toggleGnb}
-                    >
-                      {item}
-                    </button>
-                  </li>
-                )
-              }
-              return (
-                <li key={item}>
-                  <a
-                    className="nav-menu__link"
-                    href={
-                      item === '베스트 클래스'
-                        ? '/category/best-classes'
-                        : item === '새로운 클래스'
-                          ? '/category/new-classes'
-                          : item === '시그니쳐 클래스'
-                            ? '/category/signature-classes'
-                            : '#'
-                    }
-                    onClick={closeGnb}
-                  >
-                    {item}
-                  </a>
-                </li>
-              )
-            })}
+            {navItems.map((item) => (
+              <li key={item}>
+                <a
+                  className="nav-menu__link"
+                  href={
+                    item === '베스트 클래스'
+                      ? '/category/best-classes'
+                      : item === '새로운 클래스'
+                        ? '/category/new-classes'
+                        : item === '시그니쳐 클래스'
+                          ? '/category/signature-classes'
+                          : '#'
+                  }
+                  onClick={closeGnb}
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
